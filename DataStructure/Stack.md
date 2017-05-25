@@ -1,6 +1,6 @@
 # Stack 
 
-**먼저 들어간 것이 나중에 나온다! LIFO(Last In, First Out) **
+**먼저 들어간 것이 나중에 나온다! LIFO(Last In, First Out)**
 
 ## ADT 
 
