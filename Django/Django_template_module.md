@@ -136,3 +136,10 @@ header.html 이라는 이름으로 해당 코드를 작성한다.
 # person.person_name 대신 어떤게 들어가도 좋다. 
 ```
 
+* 때로는 페이지마다 js나 css를 다르게 넣어줘야할 때가 있다 .그럴 때는 
+```
+{% block extra_head%}
+{% endblock %}
+```
+을 사용하면 된다.
+
