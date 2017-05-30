@@ -573,7 +573,7 @@ public void addToHead(n){
 
 public void removeFirst(){
   if(head == null){
-    throw new RunTimeException("Nothing to remove");
+    throw new RuntimeException("Nothing to remove");
   }
   // 런타임 처리 못해줌.
 
