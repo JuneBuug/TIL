@@ -257,6 +257,8 @@ Class TreeNode{
   List<TreeNode> children;
 }
 
+```
+
 * 이진트리이면 이진 탐색 트리인지 확인하자
 이진 탐색 트리는 왼쪽 자식 노드가 부모 노드보다 작고, 오른쪽 자식 노드가 부모노드보다 큰 트리임.
 * BFS, DFS 정도는 알아두자
@@ -327,6 +329,7 @@ public class BinaryTreeHandler(){
 
 ### 오름차순 정렬된 배열을 BinarySearchTree로 바꿔야함
 
+```
 public class BSTBuilder(){
   public static Node build(int[] a){
      // 반을 쪼개서 가운데는 루트로. 재귀 호출 너무 좋음. 범위가 있고.
@@ -344,10 +347,12 @@ public class BSTBuilder(){
       return new Node(a[m],left,right);
   }
 }
+```
 
 ### BinarySearchTree 만족하는지 판별
 자식들이 아니고 자식!
 
+```
 public class TreeHandler{
     public static boolean isBst(Node root){
       return isBstRec(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
@@ -368,3 +373,4 @@ public class TreeHandler{
         return leftBst && rightBst;
     }
 }
+```
