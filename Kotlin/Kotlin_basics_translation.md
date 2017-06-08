@@ -211,3 +211,248 @@ fun main(args: Array<String>) {
 ```
 
 이제  (이전 예제에서) main 함수에서 한 줄을 지우고, person.greet()만 적어도 같은 결과가 나옵니다.
+
+
+## Collections 와 Iteration (반복) (11:32) 
+
+```
+val people = listOf(
+  Person("Michael"),
+  Person("Miguel", Language.SP),
+  Person("Michelle", Language.FR)
+)
+```
+
+표준 라이브러리 함수인 `listOf` 라는 메소드를 사용하면 `person` 의 리스트를 만들 수 있습니다. `for-in` 문법을 사용하면 person list 으로 반복문을 만들 수 있습니다. 
+
+```
+for( person in people) {
+	person.greet()
+}
+```
+
+각 반복 때마다 `person.greet()`  을 호출합니다. 아니면 더 나아가서, 확장 함수를 이 person collection에 대해서 호출하고 반복을 위해 람다를 넘겨줄 수 있겠네요. 위의 코드를 가장 단순화해봅시다. 명시적으로 나와있는 value 값을 제거하고, `it` 이라는  미리 지정된 값을 써서요. 
+
+```
+people.forEach { it.greet() }
+```
+
+아예  우리가 선언한 people이라는 value를 없앨 수도 있습니다.  아래 예제를 보면, 그런 식으로 코드를 짜서 조금 더 낫게 만들었습니다. 또한, 각 언어에 대해서 서브 class를 생성할 수 있습니다. 이를 위해 person class 를  `open`  으로 만듭니다. 이는 non-final이라는 뜻입니다. 코틀린에서는 class가 final로 되는게 기본 값이기때문입니다. 
+
+```
+enum class Language(val greeting: String) {
+  EN("Hello"), ES("Hola"), FR("Bonjour")
+}
+
+open class Person(var name: String, var lang: Language = Language.EN) {
+  fun greet() = println("${lang.greeting}, $name!")
+}
+
+class Hispanophone(name: String) : Person(name, Language.ES)
+class Francophone(name: String) : Person(name, Language.FR)
+
+fun main(args: Array<String>) {
+  listOf(
+    Person("Michael"),
+    Hispanophone("Miguel"),
+    Francophone("Michelle")
+  ).forEach { it.greet() }
+}
+
+```
+
+
+## 코틀린이 자바에 추가한 것 ( 13 : 11 ) 
+코틀린이 자바에 추가한 것과, 그걸 사용해서 뭘 얻을 수 있는지에 대해서 알아봅시다. 
+
+### Type Inference 자료형 추론 ( 13: 18) 
+다른 프로그래밍 언어에서 type inference를 몇번 본 적 있을 겁니다. 자바에서는, 우리는 자료형을 정의하고, (변수) 이름을 정하고 , 그다음에 값을 정합니다. 코틀린에서는, 약간 반대입니다. 이름을 정의하고, 자료형을 정의하고, 값을 할당하죠. 하지만 대부분의 경우에는 자료형을 정의할 필요가 없습니다. 문자열 리터럴은 문자열이라는 자료형을 추론하기에 충분하죠. character나 integer, longs, floats, doubles, Booleans 에 있어서도 마찬가지 입니다. 
+
+```
+var string: String = ""
+var string = ""
+var char = ' '
+
+var int = 1
+var long = 0L
+var float = 0F
+var double = 0.0
+
+var boolean = true
+
+var foo = MyFooType()
+```
+
+Kotlin이 추론할 수 있는 한 어떤 자료형에도 적용되는 룰입니다. 대개 local 변수라면, value나 변수를 선언할 때  자료형을 적어주지 않아도 됩니다. 추론하기 어려운 경우라면, 완전한 문법으로 변수를 정의해야합니다. `var 변수명 : 자료형 = 값 ` 이런 식으로요. 
+
+### Null Safety Null 값 보호 ( 14:22) 
+Kotlin의 강력한 기능 중 하나는 null - safety 입니다. 예제를 볼까요. 
+
+```
+String a  = null;
+System.out.println(a.length());
+```
+
+여기 자바문법으로, String이 있습니다. 이 string에 null을 할당했죠. 우리가 그 String의 길이를 출력하려고 한다면, 런타임에서 문제가 생기고, null point error exception 이 뜨게 됩니다. 우리가 null 값에 접근하려고 했기때문이죠. 
+여기, 코틀린으로 쓰인 같은 코드가 있습니다.
+
+`val a:String = null`
+
+null String을 정의했습니다. 그러나 더 가기도 전에, 컴파일러에서 에러를 알려줍니다. 
+문제는 null 타입이 아닌 자료형에 null 값을 할당했다는 것이죠. 자료형 구조에는  null 자료형과 non- null 자료형이 있습니다.  그리고 자료형 구조가 non-null 타입임을 알아보고 컴파일 시 non-nullable이 되는 것을 막은 거죠. 어떤 자료형을 nullable하게 만들려면,  **물음표**를 끝에 붙이고 null을 할당하면 됩니다. 
+
+```
+val a: String? = null
+println(a.length())
+```
+
+자 이제 계속 해볼까요. 이제 자바로 쓴 예제와 같이, String의 길이를 출력해봅시다. 하지만 java와 같은 문제에 봉착했네요. 이 String은 null일 수 있습니다. 하지만 이 경우,  우리는 자료형 구조 덕분에 런타임이 아니라 컴파일 타임에 에러를 마주할 수 있습니다. 
+
+컴파일러가 두번째 줄에서 멈추고, 고치기 위해서는 또 한번 물음표를 붙여야합니다.  이는 근본적으로, 어떤 값에 접근하기 전에 그게 null인지 알 수 있게 해줍니다. 
+
+```
+val a: String? = null
+println(a?.length())
+```
+
+만약 값이 null이면 null을 반환합니다. null이 아니라면 실제 값을 반환합니다. 현재 코드에서는 값이 null 이기때문에, 출력문에 null 값이 전달되고,  null이 출력됩니다. 
+
+### Ternary Null  삼항 null  (16: 19)
+
+`int length = a !-null ? a.length() : -1 `
+
+위와 같은 코드를 Java에서 보신 적 있을지도 모르겠네요. 삼항 연산자에서 값에 접근하려면, 값이 null이 아님을 검사하고 그다음 값을 사용해서 할당을 끝내야합니다. 만약 왼쪽에 있는 게 null check를 통과한다면 , 그때서야 접근할 수 있죠. 만약 오른쪽이 null이라면, 다른 걸 해야합니다. Kotlin에서는 정확히 똑같은 걸 할 수 있습니다.
+
+`var length = if(a!=null) a.length() else -1 `
+
+만약 a가 null이 아니라면, 접근할 수 있고, 아니면 default값을 출력해주면 됩니다. 
+하지만, 위의 코드를 더 짧게 줄일수있습니다. `elvis operator`라는 걸 사용해서요.
+
+`var length = a?.length() ? : -1`
+
+물음표를 통해서 inline에서 null check를 할 수 있습니다. 위에서 말한대로, 이건 null인 경우 null을 출력합니다. 만약 왼쪽에서  `elvis` 로 검사를 했는데 null이라면, 오른쪽을 사용합니다. 그런 경우가 아니라면, 값 측정을 계속합니다. 
+
+### Smart Casts (17:30) 
+Kotlin에는 smart casting이라는 기능이 있습니다. 로컬 object가 자료형 검사를 통과하고 나면, casting을 명시적으로 해주지 않고도 그 object(변수)의 자료형으로  접근할 수 있습니다. 예제를 봅시다. 
+
+```
+if (x is String) {
+  print(x.length())
+}
+```
+
+x가 String인지 확인하고, 만약 그렇다면 길이를 출력하는 함수입니다. 이를 위해 `is` 라는 키워드를 사용했습니다. 자바의 `instanceOf` 와 비슷하구요, 검사를 통과하면 그 뒤에는 어디서든 string처럼 쓸 수 있습니다. 
+```
+if (x is String) {
+  print(x.length())
+}
+
+print(x.size())
+```
+
+거꾸로도 작동합니다. 만약 string이 아닌지 검사했는데, String이 아니라면, 함수 밖으로 반환합니다. 하지만 만약 String이라면, 그 이후 어디든지 그걸 String 취급해주고 캐스팅을 할 필요가 없습니다. inline 로직에서도 적용됩니다. 
+
+```
+if(x !is String || x.size() == 0){
+	return 
+}
+```
+
+여기서 우리는 x가 String이 아닌지 검사하고 `or` 연산자를 사용했습니다. 이게 String이기 때문에, String으로 접근하고 코틀린에 의해서 cast될수 있었죠. 
+`when` 구문에서도 마찬가지 입니다. `when` 구문은 향상된 `switch` 구문 같은 겁니다 .
+
+```
+when(x) {
+	is Int -> print (x+1)
+	is String -> print(x.size() + 1)
+	is Array<Int> -> print (x.sum())
+}
+```
+
+우리는 자료형 검사, 자동 캐스트, 자동 캐스트에 대한 자료형 검사, 그리고 스마트 캐스트를 마쳤습니다. 
+
+## String Templates 문자열 템플릿 (19:07)
+많은 프로그래밍 언어가 문자열 템플릿이나 문자열 보간법이 있습니다. Java를 사용하면 다음과 같이 될겁니다. 
+```
+val apples = 4 
+println("I have " + apples + " apples.")
+```
+
+이 `apples` 라는 값을 그냥 문자열 중간에 끼워 붙여넣을 수 있습니다. 좀더 Kotlin 스럽게 한다면, 문자열 보간법을 할 땐 그냥 **$** 문자를 붙이고 String 중간에 넣습니다. 
+```
+val apples = 4
+println("I have $apples apples.")
+``` 
+
+수식을 넣을 수도 있죠.
+```
+val apples = 4
+val bananas = 3
+
+println("I have $apples apples and " + (apples + bananas) + " fruits.") // Java-esque
+println("I have $apples apples and ${apples+bananas} fruits.") // Kotlin
+```
+
+자바에서는 사과와 바나나 갯수를 더하고 string에 붙이는 일을 할 수 있지만,  코틀린에서는 그걸 String 한 가운데로 가져와 보간법을 적용했습니다. 우리는 중괄호로 감싸고 $ 를  앞에 붙이는 것만 하면 됩니다!
+
+## Range Expressions 범위 표현 ( 20:00)
+
+이걸 다른 프로그래밍 언어에서도 보신적 있으실 거에요.  코틀린의 특징 중 많은 부분이 다른 언어에서 왔다는 걸 아시게 될겁니다. 여기 수식이 하나 있습니다. 만약 `i` 가 1 이상이고 10 이하이면 출력해줄겁니다. i가 1과 10 사이에 있는지 검사해보겠습니다. 
+
+```
+if( 1<= i && i<=10){
+	println(i)
+}
+```
+
+위 코드 대신에 미리 만들어져있는, `intRange` 라는 걸 써보겠습니다. 1부터 10까지의 범위를 넣고, i가 그 범위 내에 있는지 확인하기 위해 `contains`  함수를 씁니다.  범위 내 있다면, i를 출력합니다. 
+
+```
+if (IntRange(1, 10).contains(i)) {
+  println(i)
+}
+```
+
+확장 함수들을 쓰면 다르게 쓸수도 있어요. 예를 들면 `1.rangeTo`  등을 써서. 그리고 `contains` 를 써서요. 
+하지만 우리는 이 연산자를 쓰는 쪽을 선호합니다. 
+
+`if (i in 1..10) { .. }`
+
+이 연산자는 `rangeTo` 를 다르게 쓴 것입니다. 널 타입 시스템을 생각하면, 이에 대해서 알 수 있죠. Kotlin 에는 원시타입이라는 게 없습니다. `int` 는 integer이거나 원시 int고, 그게 null 인지 아닌지에 따라 타입시스템이 원시 int를 쓸지 integer를 쓸지 알게 됩니다.  당신의 경우에 최적화해서요.  당신이 맞는 타입을 쓰는 한, 타입 시스템은 자바에 존재하는 어떤 원시 타입이든 자동적으로 만들어줍니다. 
+
+또한, 범위를 반복할 수도 있어요. 범위는 반복할 수 있으니까요. `step` 을 사용하면됩니다. 
+
+`for (i in 1..4 step 2) { ... }`
+
+반복을 거꾸로 할 수도 있고,  범위의 구조를 거꾸로 하고 반복을 할 수도 있죠. 
+
+`for (i in 4 downTo 1 step 2) { ... }`
+
+기본적으로, 많은 함수들을 조합해서 원하는 수식을 만들어 낼 수 있습니다.
+어떤 자료 형이라도 반복할 수 있고 , String과 새로 만든 자료형 을 포함해 어떤 자료형이라도 범위를 만들수 있구요. 반복을 할 수 있는 로직이 있고 적용가능하기만 하다면요. step은 내부적으로 숫자로 정의되어있습니다. 
+
+## Higher-Order Functions ( 22: 55) 
+Java 8 이 그러하듯 여러 언어가 이런 함수를 지원합니다. 하지만 우리는 java 8을 쓸 수 없죠. 만약 6이나 7을 쓰고 있다면, filter function을 이렇게 적용해야할 거에요. 
+
+```
+public interface Function<T, R> {
+  R call(T t);
+}
+
+public static <T> List<T> filter(Collection<T> items, Function<T, Boolean> f) {
+  final List<T> filtered = new ArrayList<T>();
+  for (T item : items) if (f.call(item)) filtered.add(item);
+  return filtered;
+}
+
+filter(numbers, new Function<Integer, Boolean>() {
+  @Override
+  public Boolean call(Integer value) {
+    return value % 2 == 0;
+  }
+});
+```
+
+먼저, 자료형 `T` 와 반환형  `R` 을 인자로 갖는 function 인터페이스를 만듭니다. 
+우리의 method는 제공된 function을 사용해서 collection을 계속 반복합니다. 
+그리고 새로운 arraylist를 만들죠. 
