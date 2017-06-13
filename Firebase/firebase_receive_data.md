@@ -56,7 +56,7 @@ myRef.addValueEventListener(new ValueEventListener() {
                 // Get Post object and use the values to update the UI
                 Internship internship = dataSnapshot.getValue(Internship.class);
                 # 받아줘야할만한 데이터 모델 java 파일로 받아준다.
-                # 여기에서 데이터를 UI에 넣는 처리.
+                # 여기에서 데이터를 UI에 넣는 처리.ㅜ정
                 // [START_EXCLUDE]
                 dummys.add(internship);
 
