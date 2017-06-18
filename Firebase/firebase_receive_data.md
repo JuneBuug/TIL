@@ -74,3 +74,43 @@ myRef.addValueEventListener(new ValueEventListener() {
             }
         });
 ```
+
+### 주의할 점
+
+List로 받아주고 싶을 땐 이렇게 한다.
+
+```
+myRef = db.getReference("internship");
+// 이 디렉토리 하위의 one, two 등의 자식들을 전부 받아주고싶다.
+```
+
+```
+
+myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //
+                for(DataSnapshot snapshot: dataSnapshot.getchildren()){
+                  Internship Internship = snapshot.getValue(Internship.class);
+                }
+
+                // [END_EXCLUDE]
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // [START_EXCLUDE]
+                Toast.makeText(getActivity(), "Failed to load post.",
+                        Toast.LENGTH_SHORT).show();
+                // [END_EXCLUDE]
+            }
+        });
+```
+
+즉, dataSnapshot에 getchildren을 호출하면
+children을 하나하나 돈다.
+children에 해당하는 데이터 모델 클래스를 만들어(여기서는 Internship)
+호출해주면 끝! 
