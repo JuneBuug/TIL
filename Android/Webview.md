@@ -28,7 +28,9 @@ webview.loadUrl(url);
 ```
 
 
-## 멀티터치와 줌 옵션 켜기 (단순한 버전)
+## 멀티터치와 줌 옵션 켜기 + 하지만 줌 아이콘은 없애기
+
+참고: http://je2ct.tistory.com/68
 
 ```
 # xml
@@ -48,6 +50,7 @@ webview.loadUrl(url);
 
 webview.getSettings().setBuiltInZoomControls(true);
 webview.getSettings().setSupportZoom(true);
+webview.getSettings.setDisplayZoomControls(false);
 ```
 
 
