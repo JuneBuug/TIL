@@ -113,4 +113,36 @@ myRef.addValueEventListener(new ValueEventListener() {
 즉, dataSnapshot에 getchildren을 호출하면
 children을 하나하나 돈다.
 children에 해당하는 데이터 모델 클래스를 만들어(여기서는 Internship)
-호출해주면 끝! 
+호출해주면 끝!
+
+
+### dataSnapshot 이란?
+침착하게 API 문서를 보자.
+
+ref: https://firebase.google.com/docs/reference/android/com/google/firebase/database/DataSnapshot
+
+DataSnapshot의 인스턴스는, Firebase의 데이터가 위치한 곳에서 받아온 데이터를 포함한다. 즉, 언제든지 파이어베이스에서 데이터를 받아오면 datasnapshot의 형태로 받아온다.
+
+datasnapshot은 변경이 불가능한, 원격 데이터베이스의 복사본이다. datasnapshot은 편집할 수 없고, 변하지도 않는다. 현 위치의 데이터를 변경하기 위해서는 `DatabaseReference` 의 `setValue(Object)` 와 같은 메소드를 사용한다. 
+
+이 datasnapshot은, 리스너의 메소드 안에서 받아올 수 있다.
+쓸 수 있는 리스너는 다음과 같다.
+
+
+```
+public ChildEventListener addChildEventListener (ChildEventListener listener)
+
+이 (데이터베이스의) 위치 기준으로, 하위(child) event들에 대해서 리스너를 단다.
+만약 (이 위치 기준) 하위 항목이 추가,삭제,변경, 이동될 경우, 이 리스너가 작동한다.
+
+
+public void addListenerForSingleValueEvent (ValueEventListener listener)
+
+이 (데이터베이스의) 위치에서 데이터의 변경을 1회만 보는 리스너를 단다. 이 위치에서의 데이터의 값을 한번만 본다.
+
+
+public ValueEventListener addValueEventListener (ValueEventListener listener)
+
+이 위치에 있는 데이터에 대한 리스너를 단다. 데이터가 변할 때마다, 이 리스너가 호출되어 변경할 수 없는 datasnapshot을 가져온다.
+
+```
