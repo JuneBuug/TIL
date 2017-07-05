@@ -22,4 +22,14 @@ git reset --hard HEAD~1
 
 git rm --cached <파일명>
 # add한 파일을 되돌립니다.
+
+
+# 다른 노트북을 쓰게 될 때 git 안깔고 author / mail 설정
+# 다른 노트북을 쓰게 되면 해당 컴퓨터의 username으로 자동 설정된다. 그걸 바꾸는 방법
+
+git config --global user.name "깃헙유저네임"
+git config --global user.email 깃헙@이메일주소.com
+# 이를 명시적으로 설정해준 뒤에
+git commit --amend --reset-author
+# 방금 전 커밋의 author를 바꿔준다.
 ```
