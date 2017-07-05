@@ -89,3 +89,6 @@ outline은 덧칠하게됨
 ### float의 문제점?
 Float 하단에 뭐가 있으면 위에 가버림. 
 위 부분은 float하고 아래는 아니게해주려면 clear:both	
+
+### text-indent 
+들여쓰기 
