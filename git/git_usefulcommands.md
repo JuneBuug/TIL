@@ -32,4 +32,10 @@ git config --global user.email 깃헙@이메일주소.com
 # 이를 명시적으로 설정해준 뒤에
 git commit --amend --reset-author
 # 방금 전 커밋의 author를 바꿔준다.
+
+git fetch origin
+git reset --hard origin/master
+# origin에 있는 소스를 강제로 받고 싶을 때 !
+
+
 ```
