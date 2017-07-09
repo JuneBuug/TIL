@@ -22,7 +22,7 @@ CDN은, 링크 주소는 하나지만 전 세계에 저장소가 분리되어있
 
 이 세가지를 한 컴퓨터에 설치하는 건 절대 안되는 일이고, DB가 가장 중요하므로 DB는 두개 정도 쓰는게 기본이다.
 
-![web_3_tier_archiecture](./web_3_tier_archiecture.png)
+![web_3_tier_archiecture](./web_3_tier_architecture.png)
 
 위의 그림을 보자.
 DB는 기본적으로 Primary DB와 통신을 한다.
@@ -65,4 +65,88 @@ WAS도 여러대가 있는데 이 사이에도 internal Load Balancer가 존재�
 * RDS : 관계형 DB를 관리한다. DBA의 인력관리를 아끼고 관리를 단순하게 하는 역할! DB에서 primary-standby 를 복사해주고, Read-replica를 만들어주는 등의 역할을 한다.
 * DynamoDB: nosql
 * IAM : 계정관리 서비스
-* CloudWatch : 서버 모니터링 서비스! 
+* CloudWatch : 서버 모니터링 서비스!
+
+# AWS 제어해보기
+
+OS X 에서 AWS CLI를 설치한다.
+AWS CLI를 설치하기 위해서는  `python3` 과 그 패키지 매니저인 `pip` 이 필요하고,
+OS X 에서 python3 을 설치하는 건 `homebrew` 라는 맥 패키지 매니저를 사용하는게 빠르다.
+
+그러니 순서는 `homebrew설치` - `brew로 python3 설치` - `pip로 awscli설치`가 맞다!
+
+
+## [Homebrew](https://brew.sh/#install) 설치
+
+터미널을 켜고 상단의 링크를 타고 들어간다.
+
+`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+를 붙여넣는다.
+
+## Homebrew로 python3 설치
+
+homebrew 설치가 완료되면 이제 brew를 사용할 수 있다.
+터미널에 `brew install python3` 을 입력해서 python3을 설치한다.
+pip3은 자동으로 설치된다.
+
+## pip3으로 AWS CLI 설치
+
+`pip install awscli` 혹은 `pip3 install awscli`를 설치한다.
+
+## 키 생성하기
+
+1. AWS에 들어간다.
+2. `IAM 서비스` - 사용자 - create credentials
+3. access key / secret key를 생성 및 다운로드
+
+
+## Access key 및 secret key 등록
+다음 커맨드를 입력한다.
+
+```
+aws configure
+AWS Access Key ID [****************2TMA]: AWS Secret Access Key [****************gt+P]: Default region name [ap-northeast-2]: Default output format [json]
+```
+
+## 사용해보기
+
+```
+aws ec2 describe-instances
+aws s3 ls
+
+ec2 describe-instances \
+--filters "Name=tag:Name,Values=유저네임*"
+ec2 describe-instance --instance-ids i-1234abcd
+ec2 start-instances --instance-ids i-1234abcd
+ec2 stop-instances --instance-ids i-1234abcd
+```
+
+
+## ec2 시작 / 정지 스크립트
+
+```
+#!/bin/bash
+
+instance=i-1234abcd
+
+aws ec2 describe-instances --instance-ids $instance --query Reservations[*].Instances[*].[InstanceId,State.Name,Tags[0].Value,PublicDnsName] --output text
+
+echo '+-------------------+'
+echo '| 1. start instance |'
+echo '| 2. stop instance  |'
+echo '+-------------------+'
+printf "choose (1-2): "
+read choice
+
+echo $choice
+if [ $choice -eq 1 ];then
+	echo "start instance $instane"
+	aws ec2 start-instances --instance-ids $instance
+elif [ $choice -eq 2 ]; then
+	echo "stop instance $instance"
+	aws ec2 stop-instances --instance-ids $instance --dry-run
+else
+	echo "bye~"
+fi
+
+```
