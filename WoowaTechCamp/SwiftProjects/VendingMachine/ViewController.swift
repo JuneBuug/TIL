@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIApplicationDelegate {
+class ViewController: UIViewController {
 
     @IBOutlet weak var defaultValueText: UILabel!
     
@@ -18,6 +18,9 @@ class ViewController: UIViewController, UIApplicationDelegate {
     let vender = VendingMachine()
     let NotificationKey = NSNotification.Name(rawValue: "NotificationKey")
     
+//    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//    appDelegate.applicationDidEnterBackground(UIApplication, controller: this)
+//    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,7 +47,7 @@ class ViewController: UIViewController, UIApplicationDelegate {
     }
     
     @IBAction func saveDefaultValue(_ sender: Any) {
-//         _ = UserDefaults.standard.setValue("test_value", forKey: "test_key")
+                  _ = UserDefaults.standard.setValue(vender.getFoodStock(), forKey: "test_key")
     }
     
     @IBAction func getDefaultValue(_ sender: Any) {
@@ -71,14 +74,14 @@ class ViewController: UIViewController, UIApplicationDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-//    func applicationDidEnterBackground(_ application: UIApplication) {
-//       
-//    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-            _ = UserDefaults.standard.setValue(vender.getFoodStock(), forKey: "test_key")
-
+    func saveValue() {
+        _ = UserDefaults.standard.setValue(vender.getFoodStock(), forKey: "test_key")
     }
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//            _ = UserDefaults.standard.setValue(vender.getFoodStock(), forKey: "test_key")
+//
+//    }
 
 }
 
