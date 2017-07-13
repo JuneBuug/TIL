@@ -15,6 +15,12 @@ class VendingMachine {
     private var foodStockList : [String : Int] = [:]
     private var soldFoodList : [String : Int] = [:]
     private var totalSoldList : [BaedalFood] = []
+    private var currentMoney : Int = 0
+    
+    
+    let NotificationKey = NSNotification.Name(rawValue: "NotificationKey") // Notification의 key를 공통적으로 선언
+    let changeMoneyKey = NSNotification.Name(rawValue: "changeMoneyKey") // Notification의 key를 공통적으로 선언
+
     
     // 음식 추가
     func addFood(food : BaedalFood){
@@ -28,6 +34,12 @@ class VendingMachine {
             foodStockList[food.getshopName()+food.getFoodName()] = 1
             foodList.append(food)
         }
+        
+        NotificationCenter.default.post(name: NotificationKey, object: nil)
+    }
+    
+    func setFoodList(list : [BaedalFood]) {
+        foodList = list
     }
     
     func getFoodStock() -> [String : Int] {
@@ -36,12 +48,23 @@ class VendingMachine {
     
     func setFoodStock(foodStock: [String: Int]) {
         foodStockList = foodStock
+         NotificationCenter.default.post(name: NotificationKey, object: nil)
+    }
+    
+    func getCurrentMoney() -> Int {
+        return currentMoney
+    }
+    
+    func addMoney(amount : Int) {
+        currentMoney = currentMoney + amount
+        
+        NotificationCenter.default.post(name: changeMoneyKey, object: nil)
     }
     
     // 금액을 입력하면 구매 가능한 음식 목록 리턴. 재고가 없을 때도 고려
     
-    func getAvailableMenuWith (money : Int) -> [BaedalFood] {
-        let cheapFoodList = foodList.filter( { $0.getPrice() <= money })
+    func getAvailableMenuWith () -> [BaedalFood] {
+        let cheapFoodList = foodList.filter( { $0.getPrice() <= currentMoney })
         var availableFoodList = cheapFoodList
         
         for food in cheapFoodList {
@@ -54,9 +77,9 @@ class VendingMachine {
     }
     
     // 특정 음식을 구매하면 먼저 구매 가능한지 보고, 잔액을 리턴
-    func buy(requestfood : BaedalFood,money : Int) -> Int {
+    func buy(requestfood : BaedalFood) -> Int {
         
-        let availableFoodlist = getAvailableMenuWith(money: money)
+        let availableFoodlist = getAvailableMenuWith()
         
         for food in availableFoodlist {
             
@@ -71,7 +94,10 @@ class VendingMachine {
                 
                 totalSoldList.append(requestfood)
                 
-                return money - food.getPrice()
+                currentMoney = currentMoney - food.getPrice()
+                NotificationCenter.default.post(name: changeMoneyKey, object: nil)
+                NotificationCenter.default.post(name: NotificationKey, object:nil)
+                return currentMoney
             }
         }
         
