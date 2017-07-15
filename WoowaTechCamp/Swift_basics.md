@@ -338,8 +338,71 @@ let closure2 = { (n:Int) -> Int in return n * n}
 # 클로저는 람다계산식(프로그래밍 구현 방식 중 하나) 구현체
 # 이름 없는 함수로 작성가능
 # 선언된 범위 변수를 캡처해서 저장하고 닫힘
-# 하지만 스위프트 클로저는 캡처해서 닫지않고 참조를 함. 
+# 하지만 스위프트 클로저는 캡처해서 닫지않고 참조를 함.
 ```
+
+### 클로저 표현식
+
+```
+let numberArray = [2, 8, 1, 3, 5]
+let resultArray = numberArray.map(squared) // 결과 값은 [4, 64, 1, 9, 25]
+let result1 = numberArray.map({ (n : Int) -> Int in return n*n })
+let result2 = numberArray.map({ (n : Int) -> Int in n*n })
+let result3 = numberArray.map({ n in return n*n })
+let result4 = numberArray.map({ n in n*n })
+let result5 = numberArray.map({ $0 * $0 })
+let result6 = numberArray.map() { $0 * $0 }
+let result7 = numberArray.map { $0 * $0 }
+```
+* 클로저는 함수로 선언하지않아도되고,인자값 대신에 그자리에 바로 선언할수있다.
+* 한 줄 표현 클로저에서는 return 구문을 생략해도 된다.
+* 클로저에서 사용하는 변수 타입은 생략할 수 있고, 배열에 있는 변수 타입으로 추정이 가능하다. in 지시어를 사용해서 변수를 명시할 수 있다.
+* 위의 경우와 마찬가지로 return 구문은 생략이 가능하다.
+* 클로저 내부에서는 축약변수를 인자값순서에 따라서 $0부터사용할수있다.
+* 함수 인자 중에서 마지막 인자 값이 클로저인 경우는 후행(trailing) 클로저로 판단하고 함수 괄호 다음에 빼서 선언할 수 있다.
+* 함수에 대한 인자값이 없는경우 괄호는생략할수있다.
+
+### 고차함수 High - order function
+
+함수 혹은 클로저를 인자, 리턴값으로 사용하는 함수
+
+```
+let names = ["Apple","JuneKim", "David", "Baemin"]
+let reversedNames = names.sorted(by : {
+  (s1 : String, s2: String) -> Bool in
+    return s1 > s2
+}
+)
+
+# sorted의 by라는 인자에 문자의 순서를 정하는 클로저를 넘겨줬다.
+
+let numbers = [1,2,3]
+let strings = numbers.map ( { element in String(element)})
+# map 다음에 함수(f(x))를 넘겨주면 f(e1), f(e2) 로 변환할 수 있다.
+```
+
+#### 자주 쓰는 고차함수
+```
+# filter
+
+let numbers = [1,2,3,4,5,10,33]
+let filtered = numbers.filter({$0 > 10})
+# 인자가 10 이 넘는 것만 골라줘
+
+# reduce
+let reduced = numbers.reduce(0, {$0 + $1})
+# 1차원 배열 => 상수, 2차원 배열 => 1차원 배열로 만들때 많이 씀.
+# 0이 $0이 되고, $1이 numbers의 요소를 돌아가면서 더한다는 뜻인듯
+
+# map
+optional도 가능
+
+# flatmap
+무조건 값을 꺼내줌
+
+```
+
+
 #### 예약어 (차후 추가)
 
 ```
