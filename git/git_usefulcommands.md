@@ -23,6 +23,8 @@ git reset --hard HEAD~1
 git rm --cached <파일명>
 # add한 파일을 되돌립니다.
 
+git rm --cached -r <파일명>
+# 파일을 삭제하고, 커밋하게 되면 원격저장소에서도 사라집니다. 
 
 # 다른 노트북을 쓰게 될 때 git 안깔고 author / mail 설정
 # 다른 노트북을 쓰게 되면 해당 컴퓨터의 username으로 자동 설정된다. 그걸 바꾸는 방법
