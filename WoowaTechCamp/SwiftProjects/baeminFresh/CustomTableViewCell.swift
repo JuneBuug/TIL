@@ -23,6 +23,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet var eventBadge: UILabel!
     @IBOutlet var badgeStackView: UIStackView!
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
                // Initialization code
@@ -33,6 +34,10 @@ class CustomTableViewCell: UITableViewCell {
         
         titleView.font = UIFont.boldSystemFont(ofSize: 18.0)
         s_priceView.font = UIFont.boldSystemFont(ofSize: 18.0)
+        
+        mainImageView.layer.cornerRadius = mainImageView.frame.size.height / 2;
+        mainImageView.layer.masksToBounds = true;
+        mainImageView.layer.borderWidth = 0;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

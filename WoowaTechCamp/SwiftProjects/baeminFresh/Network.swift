@@ -17,7 +17,7 @@ class Network {
     var courseJson : Array<Dictionary<String,Any>> = []
     var sideJson : Array<Dictionary<String,Any>> = []
     var soupJson : Array<Dictionary<String,Any>> = []
-    var detailJson : Array<Dictionary<String,Any>> = []
+    var detailJson : Dictionary<String,Any> = [:]
     
     init(){
     }
@@ -90,54 +90,20 @@ class Network {
     }
     
     func alamoGetJsonfromURLforDetail(url : String, filename: String){
-    
         Alamofire.request(url).responseJSON { response in
-            
-            if let json = response.result.value{
-                
-                var dict = [String : Any]()
-                
-                var imageArrays = [String]()
-                
-                if let array = json as? [Any]{
-                    
-                    for object in array {
-                        
-                        switch filename {
-                        case "detail" : self.detailJson.append(object as! [String : Any]); dict = [filename: self.detailJson];
-                        
-                        for dic in self.detailJson{
-                            for (key, value) in dic {
-                                if key.contains("data"){
-                                    let insideDic = value as! [String : Any] // "data" 안쪽의 dictionary
-                                    for (key, value) in insideDic{
-                                        
-                                        switch key {
-                                            case "top_image" : self.downloadImg(url: value as! String, hash: self.takeLastItemOfUrl(url: value as! String ))
-                                            case "thumb_images" : imageArrays = value as! [String]
-                                            case "detail_section" : imageArrays = value as! [String]
-                                            default: return
-                                        }
-                                        
-                                        for image in imageArrays {
-                                            self.downloadImg(url: image, hash: self.takeLastItemOfUrl(url: image ))
-                                        }
-                                    }
-                                }
-                            }
-                            }
-                        default : return
-                            
-                        }
-                        
-                        NotificationCenter.default.post(name: self.detailnotiKey, object: nil, userInfo: dict)
+    
+            if let json = response.result.value {
+               
+                if let dictionary = json as? [String: Any] {
+                    if let data = dictionary["data"] as? [String : Any] {
+                        self.detailJson = data
+                        NotificationCenter.default.post(name: self.detailnotiKey, object: nil, userInfo: ["detail": self.detailJson])
                     }
                     
                 }
-            }
-        }
     }
-    
+ }
+}
     
     func takeLastItemOfUrl(url : String ) -> String {
         let filename = url.components(separatedBy: "/").last
@@ -180,7 +146,7 @@ class Network {
         let destination: DownloadRequest.DownloadFileDestination = { _, _ in
             let documentsURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
             let fileURL = documentsURL.appendingPathComponent(hash + ".jpg")
-            
+                print(fileURL)
             return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
         }
         
@@ -189,11 +155,11 @@ class Network {
                 //                image = UIImage(contentsOfFile: imagePath)!
                 //                cell.mainImageView  = UIImageView(image: image)
                 NotificationCenter.default.post(name: self.imageKey, object: nil)
-            }else{
             }
         }
     }
-    
+       
+     
     
 }
 
