@@ -22,7 +22,7 @@ CDN은, 링크 주소는 하나지만 전 세계에 저장소가 분리되어있
 
 이 세가지를 한 컴퓨터에 설치하는 건 절대 안되는 일이고, DB가 가장 중요하므로 DB는 두개 정도 쓰는게 기본이다.
 
-![web_3_tier_archiecture](./web_3_tier_architecture.png)
+![web_3_tier_archiecture](.screentshots/web_3_tier_architecture.png)
 
 위의 그림을 보자.
 DB는 기본적으로 Primary DB와 통신을 한다.
