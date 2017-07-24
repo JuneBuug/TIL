@@ -175,7 +175,7 @@ class PinterestLayout: UICollectionViewLayout {
   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
 
     var layoutAttributes = [UICollectionViewLayoutAttributes]()
-    
+
     // Loop through the cache and look for items in the rect
     for attributes  in cache {
       if attributes.frame.intersects(rect ) {
@@ -190,4 +190,4 @@ class PinterestLayout: UICollectionViewLayout {
 ```
 
 ### Pinterest App 동작 구조
-![앱 동작 호출구조 다이어그램](./img_pinterest.png)
+![앱 동작 호출구조 다이어그램](.screenshots/img_pinterest.png)

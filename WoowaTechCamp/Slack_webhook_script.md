@@ -17,7 +17,7 @@ AWS에 ubuntu를 설치해서 instance를 start 해두었다.
 이후 다음과 같은 커맨드를 통해
 ssh로 AWS에 접속하고, 우분투를 간단하게 설정해준다.
 
-![ubuntu_setting](./img_ubuntu_setting.png)
+![ubuntu_setting](.screenshots/img_ubuntu_setting.png)
 
 ```
 chmod 400 pem키경로
@@ -141,4 +141,4 @@ chmod +x webhook.sh
 
 ## 결과화면
 
-![webhook_결과](img_webhook_result.png)
+![webhook_결과](./screentshots/img_webhook_result.png)
