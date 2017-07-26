@@ -1,0 +1,772 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		46513F9975FAF7B4CBB2A22E /* Pods_ChickenCountDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB68A06CBC81D5FDA156A0C4 /* Pods_ChickenCountDown.framework */; };
+		5C17E2A3093DEE2350ADB7C2 /* Pods_ChickenCountDownTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C800CDE5276EEF5B61C341 /* Pods_ChickenCountDownTests.framework */; };
+		989D72A51F282E9F00AEEABD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989D72A41F282E9F00AEEABD /* AppDelegate.swift */; };
+		989D72A71F282E9F00AEEABD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989D72A61F282E9F00AEEABD /* ViewController.swift */; };
+		989D72AA1F282E9F00AEEABD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 989D72A81F282E9F00AEEABD /* Main.storyboard */; };
+		989D72AC1F282E9F00AEEABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 989D72AB1F282E9F00AEEABD /* Assets.xcassets */; };
+		989D72AF1F282E9F00AEEABD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 989D72AD1F282E9F00AEEABD /* LaunchScreen.storyboard */; };
+		989D72BA1F282E9F00AEEABD /* ChickenCountDownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989D72B91F282E9F00AEEABD /* ChickenCountDownTests.swift */; };
+		989D72C51F282E9F00AEEABD /* ChickenCountDownUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989D72C41F282E9F00AEEABD /* ChickenCountDownUITests.swift */; };
+		989D72D41F2852AD00AEEABD /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989D72D31F2852AD00AEEABD /* Validator.swift */; };
+		989D72D61F28532B00AEEABD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989D72D51F28532B00AEEABD /* User.swift */; };
+		989D72DA1F28635B00AEEABD /* RandomNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989D72D91F28635B00AEEABD /* RandomNumber.swift */; };
+		989D72DC1F2867A700AEEABD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989D72DB1F2867A700AEEABD /* Network.swift */; };
+		98B1B2151F287D1D00A3B074 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1B2141F287D1D00A3B074 /* JoinViewController.swift */; };
+		98B1B2171F287D8900A3B074 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1B2161F287D8900A3B074 /* CheckViewController.swift */; };
+		98B1B2191F287D9400A3B074 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1B2181F287D9400A3B074 /* SelectDateViewController.swift */; };
+		98B1B21B1F287DA000A3B074 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1B21A1F287DA000A3B074 /* MainViewController.swift */; };
+		AC568A83B61BB655246A6DB4 /* Pods_ChickenCountDownUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4206FD05DBC58A75B28ED12 /* Pods_ChickenCountDownUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		989D72B61F282E9F00AEEABD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 989D72991F282E9F00AEEABD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 989D72A01F282E9F00AEEABD;
+			remoteInfo = ChickenCountDown;
+		};
+		989D72C11F282E9F00AEEABD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 989D72991F282E9F00AEEABD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 989D72A01F282E9F00AEEABD;
+			remoteInfo = ChickenCountDown;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03AACBEA645D8D9C0E5D17B9 /* Pods-ChickenCountDownUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChickenCountDownUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChickenCountDownUITests/Pods-ChickenCountDownUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7D813E26197F9E9AACD11858 /* Pods-ChickenCountDownUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChickenCountDownUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChickenCountDownUITests/Pods-ChickenCountDownUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		91CADD5414A18ED5CD7E4F68 /* Pods-ChickenCountDown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChickenCountDown.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChickenCountDown/Pods-ChickenCountDown.debug.xcconfig"; sourceTree = "<group>"; };
+		989D72A11F282E9F00AEEABD /* ChickenCountDown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChickenCountDown.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		989D72A41F282E9F00AEEABD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		989D72A61F282E9F00AEEABD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		989D72A91F282E9F00AEEABD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		989D72AB1F282E9F00AEEABD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		989D72AE1F282E9F00AEEABD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		989D72B01F282E9F00AEEABD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		989D72B51F282E9F00AEEABD /* ChickenCountDownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChickenCountDownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		989D72B91F282E9F00AEEABD /* ChickenCountDownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickenCountDownTests.swift; sourceTree = "<group>"; };
+		989D72BB1F282E9F00AEEABD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		989D72C01F282E9F00AEEABD /* ChickenCountDownUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChickenCountDownUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		989D72C41F282E9F00AEEABD /* ChickenCountDownUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickenCountDownUITests.swift; sourceTree = "<group>"; };
+		989D72C61F282E9F00AEEABD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		989D72D31F2852AD00AEEABD /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		989D72D51F28532B00AEEABD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		989D72D91F28635B00AEEABD /* RandomNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumber.swift; sourceTree = "<group>"; };
+		989D72DB1F2867A700AEEABD /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		98B1B2141F287D1D00A3B074 /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		98B1B2161F287D8900A3B074 /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
+		98B1B2181F287D9400A3B074 /* SelectDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
+		98B1B21A1F287DA000A3B074 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9EA9B505C8297FF7B103835C /* Pods-ChickenCountDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChickenCountDown.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChickenCountDown/Pods-ChickenCountDown.release.xcconfig"; sourceTree = "<group>"; };
+		A26157F0555877CB2C3DD446 /* Pods-ChickenCountDownTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChickenCountDownTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChickenCountDownTests/Pods-ChickenCountDownTests.release.xcconfig"; sourceTree = "<group>"; };
+		D4C800CDE5276EEF5B61C341 /* Pods_ChickenCountDownTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChickenCountDownTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB68A06CBC81D5FDA156A0C4 /* Pods_ChickenCountDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChickenCountDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4206FD05DBC58A75B28ED12 /* Pods_ChickenCountDownUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChickenCountDownUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9DD12258CE4A0818C8D1AB7 /* Pods-ChickenCountDownTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChickenCountDownTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChickenCountDownTests/Pods-ChickenCountDownTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		989D729E1F282E9F00AEEABD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46513F9975FAF7B4CBB2A22E /* Pods_ChickenCountDown.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		989D72B21F282E9F00AEEABD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C17E2A3093DEE2350ADB7C2 /* Pods_ChickenCountDownTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		989D72BD1F282E9F00AEEABD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC568A83B61BB655246A6DB4 /* Pods_ChickenCountDownUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D844A611AEFCCA4634D0600 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				91CADD5414A18ED5CD7E4F68 /* Pods-ChickenCountDown.debug.xcconfig */,
+				9EA9B505C8297FF7B103835C /* Pods-ChickenCountDown.release.xcconfig */,
+				F9DD12258CE4A0818C8D1AB7 /* Pods-ChickenCountDownTests.debug.xcconfig */,
+				A26157F0555877CB2C3DD446 /* Pods-ChickenCountDownTests.release.xcconfig */,
+				7D813E26197F9E9AACD11858 /* Pods-ChickenCountDownUITests.debug.xcconfig */,
+				03AACBEA645D8D9C0E5D17B9 /* Pods-ChickenCountDownUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		82C53ABE16EB898EFAA5886C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB68A06CBC81D5FDA156A0C4 /* Pods_ChickenCountDown.framework */,
+				D4C800CDE5276EEF5B61C341 /* Pods_ChickenCountDownTests.framework */,
+				E4206FD05DBC58A75B28ED12 /* Pods_ChickenCountDownUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		989D72981F282E9F00AEEABD = {
+			isa = PBXGroup;
+			children = (
+				989D72A31F282E9F00AEEABD /* ChickenCountDown */,
+				989D72B81F282E9F00AEEABD /* ChickenCountDownTests */,
+				989D72C31F282E9F00AEEABD /* ChickenCountDownUITests */,
+				989D72A21F282E9F00AEEABD /* Products */,
+				0D844A611AEFCCA4634D0600 /* Pods */,
+				82C53ABE16EB898EFAA5886C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		989D72A21F282E9F00AEEABD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				989D72A11F282E9F00AEEABD /* ChickenCountDown.app */,
+				989D72B51F282E9F00AEEABD /* ChickenCountDownTests.xctest */,
+				989D72C01F282E9F00AEEABD /* ChickenCountDownUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		989D72A31F282E9F00AEEABD /* ChickenCountDown */ = {
+			isa = PBXGroup;
+			children = (
+				98B1B2131F287BDB00A3B074 /* View Controller */,
+				989D72D21F2852A100AEEABD /* Model */,
+				989D72A41F282E9F00AEEABD /* AppDelegate.swift */,
+				989D72A81F282E9F00AEEABD /* Main.storyboard */,
+				989D72AB1F282E9F00AEEABD /* Assets.xcassets */,
+				989D72AD1F282E9F00AEEABD /* LaunchScreen.storyboard */,
+				989D72B01F282E9F00AEEABD /* Info.plist */,
+			);
+			path = ChickenCountDown;
+			sourceTree = "<group>";
+		};
+		989D72B81F282E9F00AEEABD /* ChickenCountDownTests */ = {
+			isa = PBXGroup;
+			children = (
+				989D72B91F282E9F00AEEABD /* ChickenCountDownTests.swift */,
+				989D72BB1F282E9F00AEEABD /* Info.plist */,
+			);
+			path = ChickenCountDownTests;
+			sourceTree = "<group>";
+		};
+		989D72C31F282E9F00AEEABD /* ChickenCountDownUITests */ = {
+			isa = PBXGroup;
+			children = (
+				989D72C41F282E9F00AEEABD /* ChickenCountDownUITests.swift */,
+				989D72C61F282E9F00AEEABD /* Info.plist */,
+			);
+			path = ChickenCountDownUITests;
+			sourceTree = "<group>";
+		};
+		989D72D21F2852A100AEEABD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				989D72D31F2852AD00AEEABD /* Validator.swift */,
+				989D72D51F28532B00AEEABD /* User.swift */,
+				989D72D91F28635B00AEEABD /* RandomNumber.swift */,
+				989D72DB1F2867A700AEEABD /* Network.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		98B1B2131F287BDB00A3B074 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				989D72A61F282E9F00AEEABD /* ViewController.swift */,
+				98B1B2141F287D1D00A3B074 /* JoinViewController.swift */,
+				98B1B2161F287D8900A3B074 /* CheckViewController.swift */,
+				98B1B2181F287D9400A3B074 /* SelectDateViewController.swift */,
+				98B1B21A1F287DA000A3B074 /* MainViewController.swift */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		989D72A01F282E9F00AEEABD /* ChickenCountDown */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 989D72C91F282E9F00AEEABD /* Build configuration list for PBXNativeTarget "ChickenCountDown" */;
+			buildPhases = (
+				1DE188FC76451C745ED30B33 /* [CP] Check Pods Manifest.lock */,
+				989D729D1F282E9F00AEEABD /* Sources */,
+				989D729E1F282E9F00AEEABD /* Frameworks */,
+				989D729F1F282E9F00AEEABD /* Resources */,
+				1127A186FC1C696D87D939A1 /* [CP] Embed Pods Frameworks */,
+				B3920C0E410230C81976181F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChickenCountDown;
+			productName = ChickenCountDown;
+			productReference = 989D72A11F282E9F00AEEABD /* ChickenCountDown.app */;
+			productType = "com.apple.product-type.application";
+		};
+		989D72B41F282E9F00AEEABD /* ChickenCountDownTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 989D72CC1F282E9F00AEEABD /* Build configuration list for PBXNativeTarget "ChickenCountDownTests" */;
+			buildPhases = (
+				712AD147693B73F1FA3500DE /* [CP] Check Pods Manifest.lock */,
+				989D72B11F282E9F00AEEABD /* Sources */,
+				989D72B21F282E9F00AEEABD /* Frameworks */,
+				989D72B31F282E9F00AEEABD /* Resources */,
+				A6BF078F3B6823DFD2B1E850 /* [CP] Embed Pods Frameworks */,
+				07B757D5132DC1E3C3A1D793 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				989D72B71F282E9F00AEEABD /* PBXTargetDependency */,
+			);
+			name = ChickenCountDownTests;
+			productName = ChickenCountDownTests;
+			productReference = 989D72B51F282E9F00AEEABD /* ChickenCountDownTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		989D72BF1F282E9F00AEEABD /* ChickenCountDownUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 989D72CF1F282E9F00AEEABD /* Build configuration list for PBXNativeTarget "ChickenCountDownUITests" */;
+			buildPhases = (
+				6D66EAC40302B313DECCAAE5 /* [CP] Check Pods Manifest.lock */,
+				989D72BC1F282E9F00AEEABD /* Sources */,
+				989D72BD1F282E9F00AEEABD /* Frameworks */,
+				989D72BE1F282E9F00AEEABD /* Resources */,
+				E36A422EDBD7DC040DD10D6B /* [CP] Embed Pods Frameworks */,
+				5FFA51466FDAA1089704C2AF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				989D72C21F282E9F00AEEABD /* PBXTargetDependency */,
+			);
+			name = ChickenCountDownUITests;
+			productName = ChickenCountDownUITests;
+			productReference = 989D72C01F282E9F00AEEABD /* ChickenCountDownUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		989D72991F282E9F00AEEABD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = woowabrothers;
+				TargetAttributes = {
+					989D72A01F282E9F00AEEABD = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					989D72B41F282E9F00AEEABD = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 989D72A01F282E9F00AEEABD;
+					};
+					989D72BF1F282E9F00AEEABD = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 989D72A01F282E9F00AEEABD;
+					};
+				};
+			};
+			buildConfigurationList = 989D729C1F282E9F00AEEABD /* Build configuration list for PBXProject "ChickenCountDown" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 989D72981F282E9F00AEEABD;
+			productRefGroup = 989D72A21F282E9F00AEEABD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				989D72A01F282E9F00AEEABD /* ChickenCountDown */,
+				989D72B41F282E9F00AEEABD /* ChickenCountDownTests */,
+				989D72BF1F282E9F00AEEABD /* ChickenCountDownUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		989D729F1F282E9F00AEEABD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				989D72AF1F282E9F00AEEABD /* LaunchScreen.storyboard in Resources */,
+				989D72AC1F282E9F00AEEABD /* Assets.xcassets in Resources */,
+				989D72AA1F282E9F00AEEABD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		989D72B31F282E9F00AEEABD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		989D72BE1F282E9F00AEEABD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07B757D5132DC1E3C3A1D793 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChickenCountDownTests/Pods-ChickenCountDownTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1127A186FC1C696D87D939A1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChickenCountDown/Pods-ChickenCountDown-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1DE188FC76451C745ED30B33 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5FFA51466FDAA1089704C2AF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChickenCountDownUITests/Pods-ChickenCountDownUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D66EAC40302B313DECCAAE5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		712AD147693B73F1FA3500DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A6BF078F3B6823DFD2B1E850 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChickenCountDownTests/Pods-ChickenCountDownTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3920C0E410230C81976181F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChickenCountDown/Pods-ChickenCountDown-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E36A422EDBD7DC040DD10D6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChickenCountDownUITests/Pods-ChickenCountDownUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		989D729D1F282E9F00AEEABD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				989D72D61F28532B00AEEABD /* User.swift in Sources */,
+				98B1B2171F287D8900A3B074 /* CheckViewController.swift in Sources */,
+				989D72A71F282E9F00AEEABD /* ViewController.swift in Sources */,
+				98B1B2191F287D9400A3B074 /* SelectDateViewController.swift in Sources */,
+				989D72D41F2852AD00AEEABD /* Validator.swift in Sources */,
+				989D72A51F282E9F00AEEABD /* AppDelegate.swift in Sources */,
+				989D72DC1F2867A700AEEABD /* Network.swift in Sources */,
+				989D72DA1F28635B00AEEABD /* RandomNumber.swift in Sources */,
+				98B1B2151F287D1D00A3B074 /* JoinViewController.swift in Sources */,
+				98B1B21B1F287DA000A3B074 /* MainViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		989D72B11F282E9F00AEEABD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				989D72BA1F282E9F00AEEABD /* ChickenCountDownTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		989D72BC1F282E9F00AEEABD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				989D72C51F282E9F00AEEABD /* ChickenCountDownUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		989D72B71F282E9F00AEEABD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 989D72A01F282E9F00AEEABD /* ChickenCountDown */;
+			targetProxy = 989D72B61F282E9F00AEEABD /* PBXContainerItemProxy */;
+		};
+		989D72C21F282E9F00AEEABD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 989D72A01F282E9F00AEEABD /* ChickenCountDown */;
+			targetProxy = 989D72C11F282E9F00AEEABD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		989D72A81F282E9F00AEEABD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				989D72A91F282E9F00AEEABD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		989D72AD1F282E9F00AEEABD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				989D72AE1F282E9F00AEEABD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		989D72C71F282E9F00AEEABD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		989D72C81F282E9F00AEEABD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		989D72CA1F282E9F00AEEABD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91CADD5414A18ED5CD7E4F68 /* Pods-ChickenCountDown.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ChickenCountDown/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.junekim.ChickenCountDown;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		989D72CB1F282E9F00AEEABD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EA9B505C8297FF7B103835C /* Pods-ChickenCountDown.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ChickenCountDown/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.junekim.ChickenCountDown;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		989D72CD1F282E9F00AEEABD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9DD12258CE4A0818C8D1AB7 /* Pods-ChickenCountDownTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ChickenCountDownTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.junekim.ChickenCountDownTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChickenCountDown.app/ChickenCountDown";
+			};
+			name = Debug;
+		};
+		989D72CE1F282E9F00AEEABD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A26157F0555877CB2C3DD446 /* Pods-ChickenCountDownTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ChickenCountDownTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.junekim.ChickenCountDownTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChickenCountDown.app/ChickenCountDown";
+			};
+			name = Release;
+		};
+		989D72D01F282E9F00AEEABD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D813E26197F9E9AACD11858 /* Pods-ChickenCountDownUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = ChickenCountDownUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.junekim.ChickenCountDownUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ChickenCountDown;
+			};
+			name = Debug;
+		};
+		989D72D11F282E9F00AEEABD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03AACBEA645D8D9C0E5D17B9 /* Pods-ChickenCountDownUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = ChickenCountDownUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.junekim.ChickenCountDownUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ChickenCountDown;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		989D729C1F282E9F00AEEABD /* Build configuration list for PBXProject "ChickenCountDown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				989D72C71F282E9F00AEEABD /* Debug */,
+				989D72C81F282E9F00AEEABD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		989D72C91F282E9F00AEEABD /* Build configuration list for PBXNativeTarget "ChickenCountDown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				989D72CA1F282E9F00AEEABD /* Debug */,
+				989D72CB1F282E9F00AEEABD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		989D72CC1F282E9F00AEEABD /* Build configuration list for PBXNativeTarget "ChickenCountDownTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				989D72CD1F282E9F00AEEABD /* Debug */,
+				989D72CE1F282E9F00AEEABD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		989D72CF1F282E9F00AEEABD /* Build configuration list for PBXNativeTarget "ChickenCountDownUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				989D72D01F282E9F00AEEABD /* Debug */,
+				989D72D11F282E9F00AEEABD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 989D72991F282E9F00AEEABD /* Project object */;
+}
