@@ -24,6 +24,8 @@
 		98B1B2171F287D8900A3B074 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1B2161F287D8900A3B074 /* CheckViewController.swift */; };
 		98B1B2191F287D9400A3B074 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1B2181F287D9400A3B074 /* SelectDateViewController.swift */; };
 		98B1B21B1F287DA000A3B074 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1B21A1F287DA000A3B074 /* MainViewController.swift */; };
+		98B1B21D1F2980DF00A3B074 /* chicken.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B1B21C1F2980DF00A3B074 /* chicken.png */; };
+		98B1B21F1F29817500A3B074 /* codesquad2.png in Resources */ = {isa = PBXBuildFile; fileRef = 98B1B21E1F29817500A3B074 /* codesquad2.png */; };
 		AC568A83B61BB655246A6DB4 /* Pods_ChickenCountDownUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4206FD05DBC58A75B28ED12 /* Pods_ChickenCountDownUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		98B1B2161F287D8900A3B074 /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		98B1B2181F287D9400A3B074 /* SelectDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		98B1B21A1F287DA000A3B074 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		98B1B21C1F2980DF00A3B074 /* chicken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chicken.png; path = ../chicken.png; sourceTree = "<group>"; };
+		98B1B21E1F29817500A3B074 /* codesquad2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codesquad2.png; sourceTree = "<group>"; };
 		9EA9B505C8297FF7B103835C /* Pods-ChickenCountDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChickenCountDown.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChickenCountDown/Pods-ChickenCountDown.release.xcconfig"; sourceTree = "<group>"; };
 		A26157F0555877CB2C3DD446 /* Pods-ChickenCountDownTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChickenCountDownTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChickenCountDownTests/Pods-ChickenCountDownTests.release.xcconfig"; sourceTree = "<group>"; };
 		D4C800CDE5276EEF5B61C341 /* Pods_ChickenCountDownTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChickenCountDownTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +157,8 @@
 		989D72A31F282E9F00AEEABD /* ChickenCountDown */ = {
 			isa = PBXGroup;
 			children = (
+				98B1B21E1F29817500A3B074 /* codesquad2.png */,
+				98B1B21C1F2980DF00A3B074 /* chicken.png */,
 				98B1B2131F287BDB00A3B074 /* View Controller */,
 				989D72D21F2852A100AEEABD /* Model */,
 				989D72A41F282E9F00AEEABD /* AppDelegate.swift */,
@@ -282,6 +288,7 @@
 				TargetAttributes = {
 					989D72A01F282E9F00AEEABD = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = B3PWYBKFUK;
 						ProvisioningStyle = Automatic;
 					};
 					989D72B41F282E9F00AEEABD = {
@@ -321,9 +328,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B1B21F1F29817500A3B074 /* codesquad2.png in Resources */,
 				989D72AF1F282E9F00AEEABD /* LaunchScreen.storyboard in Resources */,
 				989D72AC1F282E9F00AEEABD /* Assets.xcassets in Resources */,
 				989D72AA1F282E9F00AEEABD /* Main.storyboard in Resources */,
+				98B1B21D1F2980DF00A3B074 /* chicken.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,7 +657,9 @@
 			baseConfigurationReference = 91CADD5414A18ED5CD7E4F68 /* Pods-ChickenCountDown.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = ChickenCountDown/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.junekim.ChickenCountDown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -661,7 +672,9 @@
 			baseConfigurationReference = 9EA9B505C8297FF7B103835C /* Pods-ChickenCountDown.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = ChickenCountDown/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.junekim.ChickenCountDown;
 				PRODUCT_NAME = "$(TARGET_NAME)";

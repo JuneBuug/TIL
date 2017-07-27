@@ -12,8 +12,14 @@ import XCTest
 
 class ChickenCountDownTests: XCTestCase {
     
+    
+    var storyBoard : UIStoryboard?
+    var vc : ViewController?
+
     override func setUp() {
         super.setUp()
+        storyBoard = UIStoryboard(name: "Main",bundle : nil)
+        
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
@@ -31,7 +37,7 @@ class ChickenCountDownTests: XCTestCase {
         let pwlength = 6
         let idlength = 4
         let phonenum = "01049834332"
-        let phonenum2 = "ijrnbr"
+        
         
         let formatter = ISO8601DateFormatter()
         let dateString = "2017-07-25T00:00:00+09:00"
@@ -43,9 +49,11 @@ class ChickenCountDownTests: XCTestCase {
         XCTAssertTrue(validator.checkLength(str : id , length: idlength), "Id should be longer than \(idlength)")
         XCTAssertTrue(validator.isEqual(string1 : pw , string2 : pwAgain), "Password does not match")
         XCTAssertTrue(validator.isValidPhoneNumber(num: phonenum), "This is not valid phone number")
-        XCTAssertTrue(validator.isValidPhoneNumber(num: phonenum2), "This is not valid phone number")
-        XCTAssertTrue(validator.isFuture(date : date!), "Date should be future from today")
-        XCTAssertTrue(validator.checkLeftDays(date: date!) == leftDays, "Wrong left days")
+        
+        let phonenum2 = "ijrnbr"
+        XCTAssertFalse(validator.isValidPhoneNumber(num: phonenum2), "This is valid phone number")
+        XCTAssertFalse(validator.isFuture(date : date!), "Date is future from today")
+        XCTAssertFalse(validator.checkLeftDays(date: date!) == leftDays, "Right left days")
         
     }
     
@@ -94,6 +102,10 @@ class ChickenCountDownTests: XCTestCase {
     }
     
   
+    func testCheckViewController() {
+// 
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

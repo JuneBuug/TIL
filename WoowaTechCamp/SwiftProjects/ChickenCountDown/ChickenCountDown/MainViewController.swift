@@ -7,13 +7,21 @@
 //
 
 import UIKit
+import KeychainSwift
+
 
 class MainViewController: UIViewController {
 
+    let keychain = KeychainSwift()
+    var user = User()
+    let validator = Validator()
+    
     @IBOutlet weak var countDown: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getFromKeyChain()
+    
         // Do any additional setup after loading the view.
     }
 
@@ -22,6 +30,17 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func getFromKeyChain(){
+        let data = keychain.getData("User")
+        user = NSKeyedUnarchiver.unarchiveObject(with: data!) as! User
+        setValuetoCountDown(date: user.dDate)
+    }
+    
+
+    func setValuetoCountDown(date : Date){
+        let leftDays = validator.checkLeftDays(date: date)
+        countDown.text = leftDays.description
+    }
 
     /*
     // MARK: - Navigation

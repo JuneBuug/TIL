@@ -33,23 +33,6 @@ class ChickenCountDownUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func testJoinViewController(){
-        
-        let app = XCUIApplication()
-        let textField = app.textFields["아이디"]
-        textField.tap()
-        textField.typeText("juneki")
-        
-        let secureTextField = app.secureTextFields["비밀번호"]
-        secureTextField.typeText("m")
-        secureTextField.tap()
-        secureTextField.typeText("junekim")
-        
-        let secureTextField2 = app.secureTextFields["비밀번호 재확인"]
-        secureTextField2.typeText("613")
-        secureTextField2.tap()
-        secureTextField2.typeText("junekim613")
-        
-    }
+
     
 }

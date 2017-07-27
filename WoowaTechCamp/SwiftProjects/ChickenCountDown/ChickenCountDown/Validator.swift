@@ -38,8 +38,9 @@ class Validator{
         }
     }
     
+    
     func isValidPhoneNumber(num : String) -> Bool {
-        if num.characters.count == 11 || num.characters.count == 12 {
+        if num.characters.count == 10 || num.characters.count == 11 {
           
             if Int(num) != nil {
                 
@@ -81,6 +82,6 @@ class Validator{
         let today = Date()
         let components = calendar.dateComponents([.year,.month,.day], from: today, to: date)
         
-        return components.day!
+        return components.day! + 1
     }
 }
