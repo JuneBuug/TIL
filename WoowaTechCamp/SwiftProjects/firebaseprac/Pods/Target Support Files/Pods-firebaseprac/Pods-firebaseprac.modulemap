@@ -1,0 +1,6 @@
+framework module Pods_firebaseprac {
+  umbrella header "Pods-firebaseprac-umbrella.h"
+
+  export *
+  module * { export * }
+}
