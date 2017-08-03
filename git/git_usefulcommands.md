@@ -21,10 +21,10 @@ git reset --hard HEAD~1
 # 빡세게(?) 한 단계 전 커밋으로 돌립니다. 이때 커밋 코드를 남겨두지 않습니다.
 
 git rm --cached <파일명>
-# add한 파일을 되돌립니다. 즉 unstaged합니다.
+# add한 파일을 되돌립니다. 즉 untrack합니다.
 
 git rm --cached -r <파일명>
-# 파일을 삭제하고, 커밋하게 되면 원격저장소에서도 사라집니다.
+# 파일을 untrack하고, 이미 원격 저장소에 track되어있다면 원격저장소에서 안보입니다.
 
 git push origin +master
 # 커밋을 되돌린 후 로컬을 강제로 원격 저장소에 적용합니다.
