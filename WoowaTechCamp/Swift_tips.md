@@ -30,3 +30,32 @@ let rect = NSString(string: comment).boundingRect(with: CGSize(width: width, hei
 # 셀이 많은 경우(몇만개이상) 굉장히 느려질 수 있음
 
 ```
+
+
+4. Transport Security has blocked HTTP
+
+http 통신을 할 때 info.plist에 추가해줘야할 것들이 있다.
+이게 추가가 안되서 뜨는 에러로,
+다음 링크를 참조해보자.
+[StackOverflow답변](https://stackoverflow.com/questions/31254725/transport-security-has-blocked-a-cleartext-http)
+
+그러면
+```
+<key>NSAppTransportSecurity</key>
+<dict>
+  <!--Include to allow all connections (DANGER)-->
+  <key>NSAllowsArbitraryLoads</key>
+      <true/>
+</dict>
+```
+
+라는 코드를 info.plist에 추가해야한다는 사실을 알 수 있다.
+
+1. info.plist 의 source code를 연다.
+
+![info_plist_source](.screentshots/screenshot_plist.png)
+
+
+2. info.plist 하단에 위의 코드를 추가한다.
+
+![info_plist_source](.screentshots/screenshot_plist2.png)
