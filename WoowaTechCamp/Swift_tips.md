@@ -53,9 +53,9 @@ http 통신을 할 때 info.plist에 추가해줘야할 것들이 있다.
 
 1. info.plist 의 source code를 연다.
 
-![info_plist_source](.screenshots/screenshot_plist.png)
+![info_plist_source](screenshots/screenshot_plist.png)
 
 
 2. info.plist 하단에 위의 코드를 추가한다.
 
-![info_plist_source](.screenshots/screenshot_plist2.png)
+![info_plist_source](screenshots/screenshot_plist2.png)
