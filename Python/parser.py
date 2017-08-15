@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import os
-
+import codecs
 
 # python파일의 위치
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -34,10 +34,9 @@ index = 0
 for tag in soup.find_all('p',{'class': "prodName"}):
     for a_tag in tag.find_all('a'):
         text = a_tag.text
-        result = text.encode('cp949').decode('cp949')
         index = index + 1
-        data["PR%d"%index]["name"] = str(result)
+        data["PR%d"%index]["name"] = text
 
 
-with open(os.path.join(BASE_DIR, 'result.json'), 'w+') as json_file:
-    json.dump(data, json_file)
+with open(os.path.join(BASE_DIR, 'result.json'),'w+',encoding='utf-8') as json_file:
+    json.dump(data, json_file,ensure_ascii=False)
