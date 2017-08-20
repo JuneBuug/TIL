@@ -212,7 +212,7 @@ python manage.py runserver
 
 를 실행해서 확인해봅시다. 
 
-![rest_api](resapi.png)
+![rest_api](restapi.png)
 잘 나오네요!
 
 ## 추가 : Admin페이지에서 models관리하기
