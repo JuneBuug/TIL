@@ -190,4 +190,4 @@ class PinterestLayout: UICollectionViewLayout {
 ```
 
 ### Pinterest App 동작 구조
-![앱 동작 호출구조 다이어그램](.screenshots/img_pinterest.png)
+![앱 동작 호출구조 다이어그램](screenshots/img_pinterest.png)
