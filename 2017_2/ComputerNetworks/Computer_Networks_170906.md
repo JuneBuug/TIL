@@ -20,7 +20,8 @@ Maximum amount of information can be delivered ( in this context)
 ### Clause Shannon 
 정보이론의 아부지 
 
-![](Computer_Networks_170906/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202017-09-06%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2012.05.29.png)
+
+![](Computer_Networks_170906/img4.png)
 
 이것 이상 전달할 수 없음. 
 P가 클 수록 당연히 많이 전달. N이 클수록 less information 
@@ -59,7 +60,8 @@ network를 나눌 수 있음.
 
 ### Networks based on physical coverage
 
-![](Computer_Networks_170906/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202017-09-06%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2012.15.25.png)
+![](Computer_Networks_170906/img3.png)
+
 #### BAN 
 ~2m정도
 제일 작음 (Body - ) . 사람 몸 크기 정도만 커버하는 거 
@@ -161,8 +163,9 @@ Total internal reflection (전반사)
 이 레이저가 갈 수 있는 곳이 케이블 내부로 제한되어있기때문에 
 전반사가 일어나서 선이 휘어져도 선을 따라서 보낼 수 있음. 
 널리 사용되지만 아직 연구되는 중임! 
-![](Computer_Networks_170906/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202017-09-06%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2012.42.51.png)
 
+
+![](Computer_Networks_170906/img1.png)
 
 ## Networks = Networks of Networks
 networks를 연결해서 더 큰 네트워크를 만들수 있음 
@@ -199,7 +202,8 @@ N개의 노드가 있으면 어떡하냐?
 
 switching은  
 > 모든 링크를 제공하는 대신에 switch(router라는) 라는 노드를 제공해서 거기에 모든 노드를 연결하려고하는것.  O(N)으로 맨들어버림  
-![](Computer_Networks_170906/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202017-09-06%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2012.58.46.png)
+
+![](Computer_Networks_170906/img2.png)
 
 아래 적혀있는건 topology 이름
 
