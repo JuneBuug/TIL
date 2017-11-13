@@ -881,5 +881,39 @@ public class Main {
 
 }
 
+```
+
+## 2747번 피보나치 수
+아주 전형적이고 기본적인 재귀 문제
+왜 이 이상 재귀를 못풀까 ㅠ_ㅠ
+
+```java
+
+import java.util.Scanner;
+
+public class Main {
+
+
+	public static void main(String args[]) {
+
+		Scanner s = new Scanner(System.in);
+		int num = s.nextInt();
+		System.out.println(fibonnaci(num));
+
+	}
+
+	public static int fibonnaci(int n) {
+
+		if (n==0) {
+			return 0;
+		}else if (n==1) {
+			return 1;
+		}else if (n>1) {
+			return fibonnaci(n-1)+ fibonnaci(n-2);
+		}else {
+			return -1;
+		}
+	}
+}
 
 ```
