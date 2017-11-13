@@ -410,3 +410,133 @@ public class Main {
 	}
 }
 ```
+
+## 2750번 수정렬하기 (일반적인 버블소트)
+
+```java
+
+import java.util.Scanner;
+
+public class Main {
+
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int numOfTestCase = s.nextInt();
+
+		int[] arr = new int[numOfTestCase];
+
+		for (int i=0; i<numOfTestCase; i++) {
+			arr[i] = s.nextInt();
+		}
+
+		for (int i=0; i<arr.length-1;i++) {
+			for(int j=i+1; j<arr.length;j++) {
+				if ((arr[i]>arr[j])) {
+					int temp = arr[j];
+					arr[j] = arr[i];
+					arr[i] = temp;
+				}
+			}
+		}
+
+		for (int num:arr) {
+			System.out.println(num);
+		}
+
+	}
+}
+
+```
+
+## 2751 수 정렬하기 (MergeSort)
+
+1. 반으로 갈라서 각각 왼쪽, 오른쪽을 복사해둔다.
+2. 반으로 가른 두쪽을 합치는 함수를 짠다.
+3. 이 합치는 함수에서는 왼쪽 / 오른쪽 index가 남아있을 때까지 돌려서
+새로운 세번째 arr를 반환한다.
+
+* ArrayList를 쓰는게 나았으려나.
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int length = s.nextInt();
+
+		int[] arr = new int[length];
+
+		for (int i=0; i<length; i++) {
+			arr[i] = s.nextInt();
+		}
+
+		int[] sorted = mergeSort(arr,0,length);
+
+		for (int num:sorted) {
+			System.out.println(num);
+		}
+
+	}
+
+	public static int[] mergeSort(int[] array, int start, int end) {
+
+		int mid = (start+end) / 2;
+		int[] left = new int[mid];
+		int[] right = new int[end-mid];
+
+		for (int i=0;i<mid;i++) {
+			left[i] = array[i];
+		}
+
+		for(int i=mid;i<end;i++) {
+			right[i-mid] = array[i];
+		}
+		if (array.length > 1) {
+			left = mergeSort(left,0,left.length);
+			right = mergeSort(right,0,right.length);
+		}else {
+			return array;
+		}
+
+		return merge(left,right);
+
+	}
+
+
+	public static int[] merge(int[] left, int[] right) {
+		int[] result = new int[left.length+right.length];
+		int leftIndex=0,rightIndex=0,resultIndex=0;
+
+
+		while(leftIndex < left.length || rightIndex < right.length) {
+			if (leftIndex >= left.length) {
+				result[resultIndex] = right[rightIndex];
+				rightIndex ++;
+			}else if (rightIndex >= right.length) {
+				result[resultIndex] = left[leftIndex];
+				leftIndex ++;
+			}else {
+				if (left[leftIndex] <= right[rightIndex]) {
+					result[resultIndex] = left[leftIndex];
+					leftIndex ++;
+				}else {
+					result[resultIndex] = right[rightIndex];
+					rightIndex ++;
+				}
+			}
+			resultIndex ++;
+		}
+
+
+		return result;
+	}
+
+}
+
+```
