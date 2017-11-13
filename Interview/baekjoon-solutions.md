@@ -540,3 +540,265 @@ public class Main {
 }
 
 ```
+
+## 1978번 소수구하기
+
+```java
+
+import java.util.Scanner;
+
+public class Main {
+
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int num = s.nextInt(); // 100 이하
+		int cnt = 0;
+		for (int i=0; i<num; i++) {
+			int c_num = s.nextInt();
+			if (isPrime(c_num)) {
+				cnt ++;
+			}
+		}
+
+		System.out.println(cnt);
+
+	}
+
+	public static boolean isPrime(int num) {
+
+		if (num <= 1){
+			return false;
+		}else if (num == 2){
+			return true;
+		}else {
+			for (int i=2; i< (num/2)+1; i++) {
+				if ((num % i) == 0) {
+					return false;
+				}
+			}
+			return true;
+		}
+	}
+
+}
+
+```
+
+## 10828번 스택 기본
+그냥 ArrayList 씀
+
+```java
+
+package code_tes;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int num = s.nextInt(); // 명령 수
+
+		ArrayList<Integer> list = new ArrayList<Integer>();
+
+		while(num > 0) {
+			String str = s.next();
+
+			switch(str) {
+			case "push" :
+				int n = s.nextInt();
+				list.add(n);
+				break;
+			case "size" :
+				System.out.println(list.size());
+				break;
+			case "pop" :
+				if (!list.isEmpty()) {
+					System.out.println(list.get(list.size()-1));
+					list.remove(list.size()-1);
+					break;
+				}else {
+					System.out.println(-1);
+					break;
+				}
+			case "empty" :
+				if (list.isEmpty()) {
+					System.out.println(1);
+					break;
+				}else {
+					System.out.println(0);
+					break;
+				}
+			case "top" :
+				if (!list.isEmpty()) {
+					System.out.println(list.get(list.size()-1));
+					break;
+				}else {
+					System.out.println(-1);
+					break;
+				}
+			default :
+				continue;
+			}
+			num --;
+		}
+	}
+
+
+}
+```
+
+## 9012번 괄호
+
+메인에 한번에 짜려니까 역시 잘 안된다
+
+```java
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int num = s.nextInt(); // 명령 수
+
+
+		while(num > 0 ) {
+			String pStr = s.next();
+			char[] arr = pStr.toCharArray();
+
+
+			if (isValid(arr)) {
+				System.out.println("YES");
+			}else {
+				System.out.println("NO");
+			}
+
+			num --;
+		}
+	}
+
+	public static boolean isValid(char[] arr) {
+		Stack stack = new Stack();
+
+		for (char ch: arr) {
+			if (ch == '(') {
+				stack.push(ch);
+			}else if (ch == ')') {
+				if (!stack.isEmpty()) {
+					stack.pop();
+				}else {
+					return false;
+				}
+			}
+		}
+
+		if (stack.isEmpty()) {
+			return true;
+		}else {
+			return false;
+		}
+
+	}
+
+}
+```
+
+## 2504 Stack 기본 응용 (내일 풀어볼 것)
+
+
+## 1260번 BFS와 defense
+
+1. DFS
+Distance first니까
+나랑 연결되어있는 것 중에 visited 안한걸로 무조건 이동해서 또 DFS 돌린다 -> 재귀
+
+2. BFS
+뭐랄까..
+한 정점에 서서 엇 저기도 여기도 거기도 가봐야지! 하는 콜렉터에 가깝다고나 할까...
+인접행렬에 대해서 쭉 돌리는데 어 나랑 연결된 애 중에 안연결된애있었음?
+일단 큐에 넣고 계속 찾아봐야지 - 다 찾았네!
+그러면 큐에서 poll()해서 얘 기준으로 또 땅 보러가자 ~.~
+
+```java
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class Main {
+
+
+	static int[][] matrix;
+	static int numOfNode;
+	static int numOfLine;
+	static int start;
+	static boolean[] visited;
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		numOfNode = s.nextInt();
+		numOfLine = s.nextInt();
+		start = s.nextInt();
+		// 0번들은 쓰지 않는다.
+		matrix = new int[numOfNode+1][numOfNode+1];
+		visited = new boolean[numOfNode+1];
+
+		for (int i=0; i<numOfLine; i++) {
+			int a = s.nextInt();
+			int b = s.nextInt();
+
+			matrix[a][b] = matrix[b][a] = 1;
+		}
+
+		bfs(start);
+		for(int i=1;i<numOfNode+1;i++) {
+			visited[i] = false;
+		}
+
+		System.out.println("");
+
+		dfs(start);
+
+	}
+
+
+	public static void bfs(int start) {
+		visited[start] = true;
+		System.out.print(start + " ");
+
+		for(int i=1; i<=numOfNode;i++) {
+			if( matrix[start][i] == 1 && !visited[i] ) {
+				bfs(i);
+			}
+		}
+	}
+
+	public static void dfs(int start) {
+		Queue<Integer> queue = new LinkedList<Integer>();
+		queue.offer(start);
+		visited[start] = true;
+		System.out.print(start + " ");
+
+		while(!queue.isEmpty()) {
+			int node = queue.poll();
+			for(int i=1;i<=numOfNode;i++) {
+				if(matrix[node][i] == 1 && !visited[i]) {
+					queue.offer(i);
+					visited[i] = true;
+					System.out.print(i + " ");
+				}
+			}
+		}
+
+	}
+}
+
+```
