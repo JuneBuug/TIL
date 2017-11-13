@@ -802,3 +802,84 @@ public class Main {
 }
 
 ```
+
+## 10866번 Deck
+
+deck은 앞뒤로 삽입 삭제가 가능한 리스트 ~.~
+
+```java
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Main {
+
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+		int num = s.nextInt();
+		LinkedList<Integer> deck = new LinkedList<Integer>();
+
+		int n;
+		while (num > 0) {
+			switch(s.next()) {
+			case "push_back":
+				n = s.nextInt();
+				deck.addLast(n);
+				break;
+			case "push_front":
+				n = s.nextInt();
+				deck.addFirst(n);
+				break;
+			case "front":
+				if (!deck.isEmpty()) {
+					System.out.println(deck.getFirst());
+				}else {
+					System.out.println(-1);
+				}
+				break;
+			case "back":
+				if (!deck.isEmpty()) {
+					System.out.println(deck.getLast());
+				}else {
+					System.out.println(-1);
+				}
+				break;
+			case "size":
+				System.out.println(deck.size());
+				break;
+			case "pop_front":
+				if (!deck.isEmpty()) {
+					System.out.println(deck.getFirst());
+					deck.removeFirst();
+				}else {
+					System.out.println(-1);
+				}
+				break;
+			case "pop_back":
+				if (!deck.isEmpty()) {
+					System.out.println(deck.getLast());
+					deck.removeLast();
+				}else {
+					System.out.println(-1);
+				}
+				break;
+			case "empty":
+				if (deck.isEmpty()) {
+					System.out.println(1);
+				}else {
+					System.out.println(0);
+				}
+				break;
+			default:
+				continue;
+			}
+			num --;
+		}
+
+	}
+
+}
+
+
+```
