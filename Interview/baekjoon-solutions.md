@@ -1012,7 +1012,7 @@ d matrix의 (행,열)에는
 
 어떤 집에 R을 칠한다는 것 = 그 전집에서 G나 B 중 비용 적은 거 칠함 + 지금 이집에 R칠함
 
-이런 식으로 구해나가면 도미
+이런 식으로 구해나가면 됨
 
 ```java
 import java.util.Scanner;
@@ -1048,6 +1048,157 @@ public class Main {
 	}
 
 	public static int min(int a,int b){
+		return a < b ? a : b;
+	}
+
+}
+```
+
+
+## 1932번 숫자 삼각형
+
+
+```java
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int height = s.nextInt();
+
+		int[][] arr = new int[height+1][height+1];
+		int[][] d = new int[height+1][height+1];
+
+		int max = 0;
+		for(int i=0;i<height+1;i++) {
+			for(int j=0;j<height+1;j++) {
+				arr[i][j] = 0;
+				d[i][j] = 0;
+			}
+		}
+
+		for(int i=1;i<height+1;i++) {
+			for(int j=1;j<i+1;j++) {
+				arr[i][j] = s.nextInt();
+			}
+		}
+
+		for(int i=1;i<height+1;i++) {
+			for(int j=1; j<i+1;j++) {
+				d[i][j] = max(d[i-1][j],d[i-1][j-1]) + arr[i][j];
+			}
+		}
+
+		for(int i=1;i<height+1;i++) {
+			if (d[height][i] > max) {
+				max = d[height][i];
+			}
+		}
+
+		System.out.println(max);
+
+
+	}
+
+	public static int max(int a,int b){
+		return a > b ? a : b;
+	}
+
+}
+```
+
+## 2579 계단오르기
+두 노드를 생각해서 (2,1) + (1,2) + (2,2)
+인 경우 중에서 최대 값을 생각했는데
+그럴 필요는 없고
+마지막 밟아야하는 n번째 노드 기준으로 n-1를 밟았을때와 안밟았을 때를 구별해서 해준다
+
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int num = s.nextInt();
+
+		int[] arr = new int[num+1];
+		int[] d = new int[num+1];
+
+		arr[0] = d[0] = 0;
+
+		for (int i=1;i<num+1;i++) {
+			arr[i] = s.nextInt();
+		}
+
+
+		d[1] = arr[1];
+		d[2] = arr[1] + arr[2];
+
+		for(int i=3;i<num+1;i++) {
+			d[i] = max(d[i-3]+arr[i-1]+arr[i],d[i-2]+arr[i]);
+		}
+
+		System.out.println(d[num]);
+	}
+
+	public static int max(int a,int b){
+		return a > b ? a : b;
+	}
+
+}
+```
+
+## 1463번 1로 만들기
+
+DP문제는
+무엇을 최소 혹은 최대로 만들것인지에 따라서
+DP 매트릭스를 정하고 점화식을 제대로 만들고
+base case 값만 잘 정해주면 되는 거같다
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int N = s.nextInt();
+		int[] d = new int[N+1];
+		d[0] = 0;
+		d[1] = 0;
+		if (N>1) {
+			d[2] = 1;
+		}
+
+		if (N>2) {
+			d[3] = 1;
+		}
+
+		if(N>4) {
+			for(int i=4;i<N+1;i++) {
+				if( i%6 == 0 ) {
+					d[i] = min(min(d[i/2]+1, d[i-1]+1),d[i/3]+1);
+				}else if( i%2 == 0) {
+					d[i] = min(d[i/2]+1, d[i-1]+1);
+				}else if (i%3 == 0) {
+					d[i] = min(d[i/3]+1,d[i-1]+1);
+				}else {
+					d[i] = d[i-1] + 1;
+				}
+			}
+		}
+
+		System.out.print(d[N]);
+	}
+
+	public static int min(int a,int b) {
 		return a < b ? a : b;
 	}
 
