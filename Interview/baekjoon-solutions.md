@@ -1355,3 +1355,82 @@ public class Main {
 	}
 }
 ```
+
+## 2455번 지능형 기차
+이런건 왜 내는거야 3
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int max = 0;
+		int current = 0;
+		for(int i=0;i<4;i++) {
+			int out = s.nextInt();
+			int in = s.nextInt();
+			current += in - out;
+			max = max(max,current);
+		}
+		System.out.println(max);
+	}
+
+	public static int max(int a, int b) {
+		return a > b ? a : b;
+	}
+}
+```
+
+## 2740번 행렬 곱셈
+급격히 집중력이 떨어짐.
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int N = s.nextInt();
+		int M = s.nextInt();
+
+		int[][] arr1 = new int[N][M];
+
+		for(int i=0;i<N;i++) {
+			for(int j=0;j<M;j++) {
+				arr1[i][j] = s.nextInt();
+			}
+		}
+
+		M = s.nextInt();
+		int K = s.nextInt();
+		int[][] arr2 = new int[M][K];
+
+		for(int i=0;i<M;i++) {
+			for(int j=0;j<K;j++) {
+				arr2[i][j] = s.nextInt();
+			}
+		}
+
+
+		for(int x=0;x<N;x++) {
+			for(int y=0;y<K;y++) {
+				int sum = 0;
+				for(int z=0;z<M;z++) {
+					sum += arr1[x][z] * arr2[z][y];
+				}
+				System.out.print(sum+ " ");
+			}
+			System.out.println("");
+		}
+
+	}
+
+
+}
+
+
+```
