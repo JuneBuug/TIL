@@ -917,3 +917,86 @@ public class Main {
 }
 
 ```
+
+
+## 11050 이항계수 재귀함수
+
+(N,K) = (N-1,K-1) + (N-1,K) 라는 성질을 이용해서 재귀를 성립시키면 된다.
+K<0이거나 N>K인경우는 0이고,
+N=1인 경우는 무조건 1이겠지.
+제한 조건만 잘 써주면 금방인 문제
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+
+	public static void main(String args[]) {
+
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		int k = s.nextInt();
+
+		System.out.println(combination(N,k));
+
+	}
+
+	public static int combination(int N,int k) {
+
+		if (k>N || k<0) {
+			return 0;
+		}else if (N == 1) {
+			return 1;
+		}else {
+			return combination(N-1,k-1) + combination(N-1,k);
+		}
+	}
+}
+
+
+```
+
+
+## 1003번 피보나치 호출 횟수 구하기
+f(0)과 f(1)이 얼마나 호출되는지 구하는 문제
+static var 써서 그냥 구했는데
+동적 계획법이랑 무슨 연관인지 잘 모르겠다.
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+
+	static int called0=0;
+	static int called1=0;
+	public static void main(String args[]) {
+
+		Scanner s = new Scanner(System.in);
+		int testCase = s.nextInt();
+
+		for(int i=0; i<testCase; i++) {
+			int n = s.nextInt();
+			fibonacci(n);
+			System.out.println(called0+" "+called1);
+			called0 = 0;
+			called1 = 0;
+		}
+
+	}
+
+	public static int fibonacci(int n) {
+
+		 if (n==0) {
+		        called0 ++;
+		        return 0;
+		    } else if (n==1) {
+		        called1 ++;
+		        return 1;
+		    } else {
+		        return fibonacci(n-1) + fibonacci(n-2);
+		    }
+	}
+}
+```
