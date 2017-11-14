@@ -1204,3 +1204,154 @@ public class Main {
 
 }
 ```
+
+
+## 10871번 X보다 작은 수
+이런건 왜내는거야
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int N = s.nextInt();
+		int X = s.nextInt();
+
+		for(int i=0;i<N;i++) {
+			int a = s.nextInt();
+			if (a < X) {
+				System.out.print(a+ " ");
+			}
+		}
+	}
+
+}
+```
+
+## 2490번 윷놀이
+
+이런건 왜 내는거야 2
+
+```java
+package code_tes;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int cnt0 = 0;
+
+		for(int i=0;i<12;i++) {
+			if (s.nextInt() == 0) {
+				cnt0++;
+			}
+
+			if ((i+1)%4==0) {
+				switch (cnt0){
+				case 1 : System.out.println('A'); break;
+				case 2 : System.out.println('B'); break;
+				case 3 : System.out.println('C'); break;
+				case 4 : System.out.println('D'); break;
+				default : System.out.println('E'); break;
+				}
+				cnt0 = 0;
+			}
+		}
+	}
+}
+```
+
+## 3053번 택시기하학
+|x|+|y|= R 을 그릴줄만 알면
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int r = s.nextInt();
+
+		System.out.printf("%.6f",Math.PI * r * r);
+		System.out.println("");
+		System.out.printf("%.6f",2.0 * r *r);
+	}
+}
+```
+
+## 1934번 최소공배수
+일반적인 약수 구할때 처럼 N/2 + 1까지만 돌렸다가 틀림.
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int test = s.nextInt();
+
+		while(test>0) {
+			int A = s.nextInt();
+			int B = s.nextInt();
+			System.out.println(LCM(A,B));
+			test--;
+		}
+	}
+
+	public static int LCM(int A,int B) {
+		int GCD =  GCD(A,B);
+
+		return A * B / GCD ;
+	}
+
+	public static int GCD(int A,int B) {
+		int min = Math.min(A,B);
+		int GCD = 1;
+		for(int i=1; i<=min;i++) {
+			if (A % i == 0 && B % i == 0) {
+				GCD = Math.max(GCD,i);
+			}
+		}
+		return GCD;
+	}
+}
+```
+
+## 1850번 최대공약수
+런타임에러가 뜨지만 더이상어케 개선해야할지모르겠다
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+			int A = s.nextInt();
+			int B = s.nextInt();
+
+			for(int i=0;i<GCD(A,B);i++) {
+				System.out.print(1);
+			}
+	}
+
+
+	public static long GCD(long A,long B) {
+		if (B==0) {
+			return A;
+		}else {
+			return GCD(A,A%B);
+		}
+	}
+}
+```
