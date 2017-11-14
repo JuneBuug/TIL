@@ -1000,3 +1000,56 @@ public class Main {
 	}
 }
 ```
+
+## 1149 RGB 거리
+
+3가지 방법을 선택했을 때 결국 어떤 비용이 나오는 지 보고 최솟값을 고르는거.
+기본 비용 matrix와
+크기가 똑같은 matrix(d matrix)를 만듦
+
+d matrix의 (행,열)에는
+그 선택을 했을때의 비용이 빼곡히 채워져야함
+
+어떤 집에 R을 칠한다는 것 = 그 전집에서 G나 B 중 비용 적은 거 칠함 + 지금 이집에 R칠함
+
+이런 식으로 구해나가면 도미
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int numOfHouse = s.nextInt();
+
+		int[][] arr = new int[numOfHouse+1][3];
+		int[][] d = new int[numOfHouse+1][3];
+
+
+		for (int i=1; i<numOfHouse+1; i++) {
+			for (int j=0;j<3;j++) {
+				arr[i][j] = s.nextInt();
+			}
+		}
+
+		arr[0][0] = arr[0][1] = arr[0][2] = 0;
+		d[0][0] = d[0][1] = d[0][2] = 0;
+
+		for(int k=1;k<numOfHouse+1;k++) {
+			d[k][0] = min(d[k-1][1],d[k-1][2]) + arr[k][0];
+			d[k][1] = min(d[k-1][0],d[k-1][2]) + arr[k][1];
+			d[k][2] = min(d[k-1][0],d[k-1][1]) + arr[k][2];
+		}
+
+		System.out.println(min(min(d[numOfHouse][0],d[numOfHouse][1]),d[numOfHouse][2]));
+
+	}
+
+	public static int min(int a,int b){
+		return a < b ? a : b;
+	}
+
+}
+```
