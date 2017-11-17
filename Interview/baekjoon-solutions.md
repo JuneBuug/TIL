@@ -758,30 +758,30 @@ public class Main {
 			matrix[a][b] = matrix[b][a] = 1;
 		}
 
-		bfs(start);
+		dfs(start);
 		for(int i=1;i<numOfNode+1;i++) {
 			visited[i] = false;
 		}
 
 		System.out.println("");
 
-		dfs(start);
+		bfs(start);
 
 	}
 
 
-	public static void bfs(int start) {
+	public static void dfs(int start) {
 		visited[start] = true;
 		System.out.print(start + " ");
 
 		for(int i=1; i<=numOfNode;i++) {
 			if( matrix[start][i] == 1 && !visited[i] ) {
-				bfs(i);
+				dfs(i);
 			}
 		}
 	}
 
-	public static void dfs(int start) {
+	public static void bfs(int start) {
 		Queue<Integer> queue = new LinkedList<Integer>();
 		queue.offer(start);
 		visited[start] = true;
@@ -1431,6 +1431,174 @@ public class Main {
 
 
 }
+```
+
+## 2965번 캥거루
+더 사이가 큰 쪽 -1
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int A = s.nextInt();
+		int B = s.nextInt();
+		int C = s.nextInt();
+
+		System.out.println(kang(A,B,C));
+	}
+
+	public static int kang(int A,int B,int C) {
+		return B-A > C-B ? B-A-1 : C-B-1;
+	}
+
+}
+```
 
 
+## 약수 조합 갯수 구하기
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int A = s.nextInt();
+		System.out.println(area(A));
+	}
+
+	public static int area(int A) {
+		int cnt = 0;
+		for(int i=1; i<Math.sqrt((float) A)+1;i++) {
+
+			if ( (float) i == Math.sqrt(A)) {
+				cnt ++;
+			}else if (A%i==0) {
+				cnt +=2;
+			}
+		}
+
+		return cnt;
+	}
+
+}
+```
+
+## 10점을 얼마나 몇 학기 더 맞아야 기준에 넘을까
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int num = s.nextInt();
+		int[] arr = new int[num];
+
+		while(num>0) {
+			arr[num-1] =s.nextInt();
+			num --;
+		}
+
+		System.out.println(termLeft(arr));
+
+	}
+
+	public static int termLeft(int[] arr) {
+		int sum = 0;
+		for(int e : arr) {
+			sum += e;
+		}
+
+		return (int) ((9.5 * arr.length - sum) / 0.5);
+	}
+
+}
+```
+
+
+## 이분매칭 (답 이상함, 수정요)
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+
+		int test = s.nextInt();
+		while(test>0) {
+			int N = s.nextInt(); // 사람수이자 자리수
+			int condition = s.nextInt(); //앞으로 나올 조건 수
+			int[][] arr = new int[N][N]; // 인접행렬
+			boolean[] visited = new boolean[N]; // 이 사람은 매칭했는지?
+			int[] seatTaken = new int[N]; // 이 자리가 찼는지, 찾으면 몇번인지
+
+			for(int i=0;i<condition;i++) {
+				int person = s.nextInt();
+				int seat = s.nextInt();
+				arr[person][seat] = 1;
+			}
+
+			for(int j=0; j<N;j++) {
+				seatTaken[j] = -1;
+				visited[j] = false;
+			}
+
+			if (match(N,arr,visited,seatTaken)) {
+				System.out.print("O");
+			}else {
+				System.out.print("X");
+			}
+
+			test --;
+		}
+
+	}
+
+	public static int dfs(int person,int[][] arr,boolean[] visited,int[] seatTaken) {
+		if (person < 0 ) {
+			return 0;
+		}
+		if (visited[person]) {
+			return 0;
+		}
+
+		visited[person] = true;
+		for (int i=0; i< arr[person].length; i++) {
+			int seat = arr[person][i];
+
+			if ( seatTaken[seat] == -1 || dfs(seatTaken[seat],arr,visited,seatTaken) == 1) {
+				seatTaken[seat] = person;
+				return 1;
+			}
+
+		}
+
+		return 0;
+	}
+
+	public static boolean match(int N,int[][] arr,boolean[] visited,int[] seatTaken) {
+		int max = 0;
+		for(int i=0; i< N;i++) {
+			if (dfs(i,arr,visited,seatTaken) == 1) {
+				max ++;
+			}
+		}
+
+		if (max == N) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+}
 ```
