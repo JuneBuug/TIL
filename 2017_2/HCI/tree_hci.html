@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/ />
+<!-- 자바 스크립트 부분 -->
+<script>
+
+// simulation 로직 부분
+window.onload = function(){
+    var canvas = document.getElementById("canvas");
+  	var ctx = canvas.getContext("2d");
+  	// 전체 페이지가 canvas가 되도록 조정
+  	var W = window.innerWidth;
+  	var H = window.innerHeight;
+  	canvas.width = W;
+  	canvas.height = H;
+
+    var tree = new Tree('RootNode');
+    console.log("이 노드 id는 " +tree._root.id);
+};
+
+
+function Node(data,id){
+  this.data = data;
+  this.id = id;
+  this.parent = null;
+  this.children = [];
+};
+
+function Tree(data){
+  this.maxId = 0;
+  var node = create_root(data);
+  this._root = node;
+  //Tree 내부에 tree가 써야하는 function
+  function create_root(data){
+    return new Node(data,0);
+  }
+
+  function add_node(parent,child){
+    maxId ++;
+    child.id = maxId;
+    parent.children.push(child);
+    child.parent = parent;
+  }
+}
+
+</script>
+
+
+</head>
+
+<body>
+
+<canvas id="canvas">This browser does not support canvas.</canvas>
+
+</body>
