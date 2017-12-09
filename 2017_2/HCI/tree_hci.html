@@ -12,11 +12,39 @@ window.onload = function(){
   	// 전체 페이지가 canvas가 되도록 조정
   	var W = window.innerWidth;
   	var H = window.innerHeight;
+    var nodeList = new Array();
   	canvas.width = W;
   	canvas.height = H;
 
     var tree = new Tree('RootNode');
     console.log("이 노드 id는 " +tree._root.id);
+    tree.add_graphic_node('junekim','RootNode',tree.traverseDF,1);
+    tree.add_graphic_node('second','RootNode',tree.traverseDF,1);
+    tree.add_graphic_node('taeyang','junekim',tree.traverseDF,1);
+    tree.add_graphic_node('melomance','junekim',tree.traverseDF,1);
+    tree.add_graphic_node('태양','taeyang',tree.traverseDF,1);
+
+    console.log(tree._root.children);
+
+    tree.traverseDF(function(node) {
+        nodeList.unshift(node);
+        console.log(node.data);
+    });
+
+   var x = 0;
+   var y = 0;
+   var parent = tree._root
+   nodeList.forEach(function(node) {
+        x += 104;
+        if (parent != node.parent){
+          y+= 100;
+        }
+        parent = node.parent;
+        showGraphicNode(ctx,node,100,100,x,y,node.data);
+    });
+
+    console.log(nodeList);
+
 };
 
 
@@ -27,22 +55,196 @@ function Node(data,id){
   this.children = [];
 };
 
+// graphic element를 그리는 노드
+function graphicNode(data,id){
+  Node.call(this,data,id);
+  this.labelAttr = "";
+  this.lineAttr = "";
+  this.rectangleAttr = "";
+  this.pointAttr = "";
+}
+
+// 이 노드는 Node를 상속
+graphicNode.prototype = new Node();
+
 function Tree(data){
-  this.maxId = 0;
   var node = create_root(data);
   this._root = node;
   //Tree 내부에 tree가 써야하는 function
   function create_root(data){
-    return new Node(data,0);
-  }
-
-  function add_node(parent,child){
-    maxId ++;
-    child.id = maxId;
-    parent.children.push(child);
-    child.parent = parent;
+    return new Node(data,guidGenerator());
   }
 }
+
+//깊이 우선 탐색
+Tree.prototype.traverseDF = function(callback) {
+
+    // this is a recurse and immediately-invoking function
+    (function recurse(currentNode) {
+        // step 2
+        for (var i = 0, length = currentNode.children.length; i < length; i++) {
+            // step 3
+            recurse(currentNode.children[i]);
+        }
+
+        // step 4
+        callback(currentNode);
+
+        // step 1
+    })(this._root);
+
+};
+
+
+function showGraphicNode(context,node,width,height,x,y,data){
+  if (node instanceof graphicNode){
+
+    if (node.labelAttr != "") {
+        console.log("그려볼게");
+        drawTextBox(context,width,height,x,y,data);
+    }else if (node.lineAtrr != ""){
+        drawRectangle(context,width,height,x,y);
+    }
+  }
+}
+
+//이 트리에 이 노드가 포함되어있는지 확인
+Tree.prototype.search_node = function(callback, traversal) {
+    traversal.call(this, callback);
+};
+
+// 노드를 추가하는 함수
+Tree.prototype.add_node = function(data, toData, traversal) {
+    var child = new Node(data,guidGenerator()),
+        parent = null,
+        callback = function(node) {
+            if (node.data === toData) {
+                parent = node;
+            }
+        };
+
+    this.search_node(callback, traversal);
+
+    if (parent) {
+        parent.children.push(child);
+        child.parent = parent;
+    } else {
+        throw new Error('존재하지 않는 노드에 자식 노드를 넣을 수 없습니다.');
+    }
+};
+
+// graphic 노드를 추가하는 함수
+Tree.prototype.add_graphic_node = function(data, toData, traversal,graphicType) {
+
+    var child = new graphicNode(data,guidGenerator()),
+        parent = null,
+        callback = function(node) {
+            if (node.data === toData) {
+                parent = node;
+            }
+        };
+
+    this.search_node(callback, traversal);
+
+    if (graphicType == 1){
+      child.labelAttr = "나는 그래픽 레이블 노드";
+    }
+
+    if (graphicType == 2) {
+      child.lineAttr = "나는 line 노드";
+    }
+
+    if (graphicType == 3) {
+      child.rectangleAttr = "나는 rectangleAttr";
+    }
+
+    if (graphicType == 4) {
+      child.pointAttr = "나는 pointAttr";
+    }
+
+    if (parent) {
+        parent.children.push(child);
+        child.parent = parent;
+    } else {
+        throw new Error('존재하지 않는 노드에 자식 노드를 넣을 수 없습니다.');
+    }
+};
+
+
+
+// 노드를 삭제하는 함수 (Node를 상속한 타입들은 상관없음)
+Tree.prototype.delete_node = function(data, fromData, traversal) {
+    var tree = this,
+        parent = null,
+        childToRemove = null,
+        index;
+
+    var callback = function(node) {
+        if (node.data === fromData) {
+            parent = node;
+        }
+    };
+
+    this.search_node(callback, traversal);
+
+    if (parent) {
+        index = findIndex(parent.children, data);
+
+        if (index === undefined) {
+            throw new Error('삭제할 노드가 존재하지 않습니다.');
+        } else {
+            childToRemove = parent.children.splice(index, 1);
+        }
+    } else {
+        throw new Error('부모 노드가 존재하지 않습니다.');
+    }
+
+    return childToRemove;
+};
+
+// array중에 이 data가 어디에 위치해있는지 찾는 함수
+function findIndex(arr, data) {
+    var index;
+
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i].data === data) {
+            index = i;
+        }
+    }
+
+    return index;
+}
+
+// id 생성하는 함수
+function guidGenerator() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
+//drawRectangle을 그리는 함수
+function drawRectangle(context,width,height,x,y){
+  var grd = context.createLinearGradient(x, y, width, height);
+  grd.addColorStop(0, '#a6c0fe');
+  grd.addColorStop(1, '#f68084');
+  context.fillStyle = grd;
+  context.rect(x, y, width, height);
+  context.fill();
+
+};
+
+// textbox를 그리는 함수
+function drawTextBox(context,width,height,x,y,text){
+  context.font = '12px san-serif';
+  context.fillStyle = "black";
+  context.textAlign = 'center';
+  context.textBaseline = 'middle';
+  context.fillRect(x,y, width, height);
+  context.fillStyle = "white";
+  context.fillText(text, x + width/2, y + height/2);
+  console.log("그렸당");
+};
 
 </script>
 
