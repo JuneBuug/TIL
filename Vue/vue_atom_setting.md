@@ -1,10 +1,10 @@
-# Atom setting하기 
+# Atom setting하기
 
 ## theme
-UITheme : Set 
+UITheme : Seti
 Syntax Theme : Atom Material Dark
 
-## Packages 
+## Packages
 [atom-beautify](https://atom.io/packages/atom-beautify)
 [autoclose-html](https://atom.io/packages/autoclose-html)
 [highlight-selected](https://atom.io/packages/highlight-selected)
