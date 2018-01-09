@@ -31,6 +31,34 @@ deploy와 development, base 파일로 나누곤하는데
 전자를 선택하겠다 (딱봤을 때 첫글자가 다 달라서 구분하기 편함)
 
 [Django 배포준비](https://jyhwng.github.io/pythondjango/2017/02/14/django-settings-for-deploy.html)를 참고한다.
+파일 구성은 다음과 같다.
+```
+<django-project이름>
+├── envs.json
+├── manage.py
+├── <app이름>
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── authentication.py
+│   ├── migrations
+│   ├── models.py
+│   ├── serializer.py
+│   ├── social.py
+│   ├── tests.py
+│   └── views.py
+├── requirements.txt
+└── <django-project이름>
+    ├── __init__.py
+    ├── settings
+    │   ├── __init__.py
+    │   ├── common.py
+    │   ├── dev.py
+    │   └── prod.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+```
 
 여기에 json파일로 envs.json을 만들어서 SECRET_KEY 및 DATABASE_NAME등을 빼고 공개 repo의 경우에는 json 파일을 올리지 않는다.
 
