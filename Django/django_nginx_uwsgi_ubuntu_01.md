@@ -1,4 +1,4 @@
-# Django + Postgresql + Nginx + uwsgi + Ubuntu 16.04 + Amazon ec2 설정하기
+# Django + Postgresql + Nginx + uwsgi + Ubuntu 16.04 + Amazon ec2 설정하기 1편
 
 
 ###  참고
@@ -153,6 +153,10 @@ sudo vi /home/<유저이름>/<프로젝트이름>/run/uwsgi.ini
 하여 옵션파일을 만든다. run이 예약어인 디렉토리인지는 불분명하다. 그냥 만들던데.
 저렇게 해서 vi를 연 후 다음 내용을 붙여 넣기한다.
 
+```bash
+sudo chown <유저이름>:www-data run
+# run 폴더의 권한을 바꿔준다.
+```
 
 ```shell
 [uwsgi]
