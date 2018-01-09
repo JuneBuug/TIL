@@ -58,9 +58,11 @@ Django API 서버는 public subnet에, PostgreSQL DB 는 private subnet에 위�
 ### public subnet에 ec2를 설정하기
 
 ec2 instance를 만들어준다.
-VPC :  위에서 설정한 public subnet에 해당하도록 설정해준다.
-OS : 무난한 ubuntu 16.04 LTS 를 선택
-key : pem키는 잃어버리지 않도록한다. 한번 받으면 다시 받을 수 없고, 남에게 전달할 때는 암호화 압축해서 전달하는 게 정석임
+
+* VPC :  위에서 설정한 public subnet에 해당하도록 설정해준다.
+* OS : 무난한 ubuntu 16.04 LTS 를 선택
+* key : pem키는 잃어버리지 않도록한다. 한번 받으면 다시 받을 수 없고, 남에게 전달할 때는 암호화 압축해서 전달하는 게 정석임
+* port : 80포트와 ssh 포트, django 포트(8000) 를 열어준다
 
 ## 접속과 ubuntu 기본 설정
 
@@ -119,7 +121,7 @@ settings 폴더에 들어갔기때문에일반 BASE_DIR와는 한단계 깊게 �
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname((os.path.abspath(__file__)))))
 '''
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-
+```
 
 
 ```bash
@@ -192,7 +194,7 @@ Description=uWSGI Emperor service
 [Service]
 ExecStart=/home/<유저이름>/<프로젝트>/<가상환경이름>/bin/uwsgi \
         --emperor /home/<유저이름>/<프로젝트>/run
-User=foo
+User=<유저이름>
 Group=www-data
 Restart=on-failure
 KillSignal=SIGQUIT
@@ -271,5 +273,5 @@ sudo systemctl restart nginx
 
 ```bash
 sudo apt-get install python3-dev python3-pip python3-setuptools
-sudo -H pip3 install uwsgi 
+sudo -H pip3 install uwsgi
 ```
