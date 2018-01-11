@@ -65,6 +65,19 @@ privateIP 설정할 경우 inst-Postgre의 보안그룹 inbound 규칙을 5432 -
 
 ### inst-Postgre에서의 설정
 
+postgreSQL 을 ubuntu에서 설치하자
+
+```bash
+sudo apt-get update
+sudo apt-get install postgresql postgresql-contrib
+```
+
+postgreSQL 설정하기
+
+```bash
+sudo -i -u postgres
+psql
+```
 추가적인 설정이 필요하다.
 
 ```bash
