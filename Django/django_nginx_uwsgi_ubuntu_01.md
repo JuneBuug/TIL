@@ -13,6 +13,8 @@
 Nginx는 웹서버. 정적인 부분을 담당하고 html,css,js, images와 같은 부분을 유저에게 전달해준다.
 uWSGI는 웹 어플리케이션 서버. 동적인 부분을 처리해준다. 유저의 request를 python 요청으로 바꿔서 django 서버에게 일임하고, 다시 python 결과를 바꿔서 돌려보내주는 역할을한다.
 
+uWSGI만으로도 서비스가 가능하지만,
+static한 부분은 Nginx가 처리해줌으로서 서버에 들어가는 load를 줄일수 있다고 한다.
 
 ## 배포에 필요한 Django project 준비
 
@@ -125,9 +127,12 @@ source ~/.bashrc
 
 가상환경 생성 후 django project 땡겨오기
 ```bash
-mkvirtualenv <가상환경이름>
+# mkvirtualenv <가상환경이름>
+
 git clone <git저장소>
 cd <프로젝트>
+python3 -m virtualenv <가상환경이름>
+# 가상환경 생성.
 pip3 install -r requirements.txt
 pip3 install Django uwsgi
 # django 프로젝트 내에 pip3 freeze > requirements.txt 로 의존성을 빼주었었을 경우
@@ -181,11 +186,6 @@ sudo vi /home/<유저이름>/<프로젝트이름>/run/uwsgi.ini
 하여 옵션파일을 만든다. run이 예약어인 디렉토리인지는 불분명하다. 그냥 만들던데.
 저렇게 해서 vi를 연 후 다음 내용을 붙여 넣기한다.
 
-```bash
-sudo chown <유저이름>:www-data run
-# run 폴더의 권한을 바꿔준다.
-```
-
 ```shell
 [uwsgi]
 uid = <유저이름>
@@ -205,6 +205,13 @@ chmod-socket = 660
 vacuum = true
 ```
 
+<프로젝트> 디렉토리까지 cd 명령어로 이동한 후 권한을 바꿔준다.
+```bash
+# 홈에서
+cd <프로젝트이름>
+sudo chown <유저이름>:www-data run
+# run 폴더의 권한을 바꿔준다.
+```
 
 ### 서비스 등록 스크립트 생성
 
@@ -248,6 +255,10 @@ sudo systemctl status uwsgi
 # 구동 확인. 이 시점에서 running이 아니면 문제가 있는 거니 위의 설정을 꼼꼼히 확인하자.
 ```
 
+## nginx 설치하기
+```bash
+sudo apt-get install nginx
+```
 
 ## nginx 설정
 
@@ -296,9 +307,18 @@ sudo rm -f /etc/nginx/sites-enabled/<프로젝트>
 
 ```bash
 sudo nginx -t
-# test를 통과해야한다.
+# test를 통과하면 다음과 같이 뜬다.
+# nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+# nginx: configuration file /etc/nginx/nginx.conf test is successful
 sudo systemctl restart nginx
 ```
+
+### 언제 uwsgi재시작을 할건가
+
+`sudo systemctl restart uwsgi` 는 언제 할까
+
+1. git pull을 했을 때
+당연히 Django 앱의 내용이 달라졌기때문에 그 내용이 적용되려면 python 명령을 해석해주는 친구가 다시 바뀐걸 알아채도록 재시작
 
 
 ### cf) 전역 uWSGI 설치
