@@ -10,7 +10,7 @@
 ## Nginx와 uwsgi 란
 
 [참고자료](http://technerd.tistory.com/55?category=629332)
-Nginx는 웹서버. 정적인 부분을 담당하고 html,css,js, images와 같은 부분을 전달해준다.
+Nginx는 웹서버. 정적인 부분을 담당하고 html,css,js, images와 같은 부분을 유저에게 전달해준다.
 uWSGI는 웹 어플리케이션 서버. 동적인 부분을 처리해준다. 유저의 request를 python 요청으로 바꿔서 django 서버에게 일임하고, 다시 python 결과를 바꿔서 돌려보내주는 역할을한다.
 
 
@@ -66,7 +66,7 @@ deploy와 development, base 파일로 나누곤하는데
 
 ## Amazon EC2 (선택사항)
 
-VPC에서 public 과 private subnet을 나누어 설정하는데 이때
+VPC(Virtual Private Cloud)에서 public 과 private subnet을 나누어 설정하는데 이때
 
 VPC CIDR IP addr 설정은 대개 10.X.0.0/16 으로 하고, subnet을 10.X.1.0/24 / 10.X.11.0/24 등의 방식으로 나눈다.
 (subnet이 많이 증가될 경우를 대비하여 이렇게 설정. subnet을 더 많이 써야하는 회사의 경우 11.0이 아니라 61.0 부터 시작하기도 한다.)
@@ -145,7 +145,7 @@ import os
 from .common import *
 '''
 common.py를 모두 포함하는데, 여기에 BASE_DIR가 정의 되어있다.
-settings 폴더에 들어갔기때문에일반 BASE_DIR와는 한단계 깊게 설정하여
+settings 폴더에 들어갔기때문에 일반 BASE_DIR와는 한단계 깊게 설정하여
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname((os.path.abspath(__file__)))))
 '''
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
