@@ -10,8 +10,12 @@
 ## Nginx와 uwsgi 란
 
 [참고자료](http://technerd.tistory.com/55?category=629332)
+
 Nginx는 웹서버. 정적인 부분을 담당하고 html,css,js, images와 같은 부분을 유저에게 전달해준다.
-uWSGI는 웹 어플리케이션 서버. 동적인 부분을 처리해준다. 유저의 request를 python 요청으로 바꿔서 django 서버에게 일임하고, 다시 python 결과를 바꿔서 돌려보내주는 역할을한다.
+
+uWSGI는 웹 어플리케이션 서버. 동적인 부분을 처리해준다.
+
+유저의 request를 python 요청으로 바꿔서 django 서버에게 일임하고, 다시 python 결과를 바꿔서 돌려보내주는 역할을한다.
 
 uWSGI만으로도 서비스가 가능하지만,
 static한 부분은 Nginx가 처리해줌으로서 서버에 들어가는 load를 줄일수 있다고 한다.
@@ -25,12 +29,14 @@ python3 manage.py check --deploy
 # deploy 준비가 됐는지 안됐는지 검사해준다.
 ```
 
-차치하고, Django Project를 배포하려면 <프로젝트>/settings.py를 나눠서 설정해둬야한다.
+기본 개발과정에서 이걸 돌리면 오류가 엄청나게 나온다.
+
+일단 Django Project를 배포하려면 <프로젝트>/settings.py를 분기해서 설정해야한다.
 
 사람마다 production과 development, common 이라는 이름 혹은
 deploy와 development, base 파일로 나누곤하는데
 
-전자를 선택하겠다 (딱봤을 때 첫글자가 다 달라서 구분하기 편함)
+여기서는 전자를 선택하겠다.
 
 [Django 배포준비](https://jyhwng.github.io/pythondjango/2017/02/14/django-settings-for-deploy.html)를 참고한다.
 파일 구성은 다음과 같다.
@@ -320,6 +326,20 @@ sudo systemctl restart nginx
 1. git pull을 했을 때
 당연히 Django 앱의 내용이 달라졌기때문에 그 내용이 적용되려면 python 명령을 해석해주는 친구가 다시 바뀐걸 알아채도록 재시작
 
+### ec2 정지->시작 으로 publicIP가 달라졌을 때
+ec2 일시정지 이후 시작을 다시 하면 publicIP가 달라지는 경우가 있다.
+이때 다음 파일들도 같이 설정해줘야한다.
+
+```
+sudo vi /etc/nginx/sites-available/<프로젝트>
+# 열리는 파일에서 서버 ip 변경
+sudo rm -f /etc/nginx/sites-enabled/<프로젝트>
+sudo ln -s /etc/nginx/sites-available/<프로젝트> /etc/nginx/sites-enabled/<프로젝트>
+# 변경된 서버 ip 가 적용된 파일을 다시 링크해준다.
+
+django에서 사용되는 setting 파일의 ALLOWED_HOSTS
+# ALLOWED_HOSTS에 변경된 서버 ip를 넣어준다.
+```
 
 ### cf) 전역 uWSGI 설치
 
