@@ -4,6 +4,8 @@
 ## 참고
 [postgresql 을 재설치하고 재설정 하는 방법](https://ansuchan.com/postgresql-korean-order/)
 
+[백업만으로 해결되는 매우 친절한 링크](https://jupiny.com/2016/12/12/sort-korean-in-postgresql/)
+
 
 ## postgresql를 삭제하지 않고 노가다로 해결하는 방법
 
