@@ -43,4 +43,9 @@ git reset --hard origin/master
 # origin에 있는 소스를 강제로 받고 싶을 때 !
 
 
+# 특정 폴더만 받고싶을때
+git init
+git remote add [REMOTE_NAME] [GIT_URL]
+git fetch REMOTE_NAME
+git checkout REMOTE_NAME/BRANCH -- path/to/directory
 ```
