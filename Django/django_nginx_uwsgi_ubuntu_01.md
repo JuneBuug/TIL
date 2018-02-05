@@ -137,10 +137,13 @@ source ~/.bashrc
 
 git clone <git저장소>
 cd <프로젝트>
+pip3 install Django uwsgi
+# 우분투 전체에 Django와 uwsgi를 설치한다.
 python3 -m virtualenv <가상환경이름>
 # 가상환경 생성.
+source <가상환경이름>/bin/activate
+# 가상환경 활성화
 pip3 install -r requirements.txt
-pip3 install Django uwsgi
 # django 프로젝트 내에 pip3 freeze > requirements.txt 로 의존성을 빼주었었을 경우
 ./manage.py makemigrations --settings=<프로젝트>.settings.prod
 # prod.py에 설정이 있다
@@ -187,6 +190,7 @@ deactivate
 ### uWSGI 옵션파일
 
 ```bash
+mkdir /home/<유저이름>/<프로젝트이름>/run
 sudo vi /home/<유저이름>/<프로젝트이름>/run/uwsgi.ini
 ```
 하여 옵션파일을 만든다. run이 예약어인 디렉토리인지는 불분명하다. 그냥 만들던데.
