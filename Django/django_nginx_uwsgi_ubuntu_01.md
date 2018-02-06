@@ -145,6 +145,8 @@ source <가상환경이름>/bin/activate
 # 가상환경 활성화
 pip3 install -r requirements.txt
 # django 프로젝트 내에 pip3 freeze > requirements.txt 로 의존성을 빼주었었을 경우
+pip3 install Django uwsgi
+# 가상환경에도 Django와 uwsgi를 설치한다.
 ./manage.py makemigrations --settings=<프로젝트>.settings.prod
 # prod.py에 설정이 있다
 ./manage.py migrate --settings=<프로젝트>.settings.prod
