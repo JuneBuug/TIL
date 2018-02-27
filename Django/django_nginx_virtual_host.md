@@ -170,3 +170,19 @@ http {
 
 server_names_hash_bucket_size 64; 앞에 있는 주석표시 # 를 지워준다.
 `esc + :wq` 로 저장하고 닫기.
+
+
+## uwsgi 설정하기
+
+기존에 했던 것 처럼 각각 파일에 uwsgi ini 파일이 있지만, 이번에는 그걸 옮겨보자.
+
+먼저 옮겨줄 데를 만들어준다.
+
+```bash
+sudo mkdir -p /etc/uwsgi/sites
+```
+
+```bash
+sudo cp /home/<유저명>/<프로젝트명>/run/<프로젝트명>.ini /etc/uwsgi/sites/<첫번째도메인>.ini
+sudo cp /home/<유저명>/<프로젝트명>/run/<프로젝트명>.ini /etc/uwsgi/sites/<두번째도메인>.ini
+```
