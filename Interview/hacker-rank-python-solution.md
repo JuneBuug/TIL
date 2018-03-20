@@ -61,3 +61,50 @@ answer = array_left_rotation(a, n, k);
 print(*answer, sep=' ')
 
 ```
+
+
+## Strings: Making Anagrams
+
+anagram 관계를 만들기 위해서는
+몇개의 string을 제거해야할까?
+
+```python
+def number_needed(a, b):
+    dic1 = {}
+    dic2 = {}
+    str1 = list(a)
+    str2 = list(b)
+
+    for item in str1:
+        if item in dic1.keys():
+            dic1[item] += 1
+        else:
+            dic1[item] = 1
+
+    for item in str2:
+        if item in dic2.keys():
+            dic2[item] += 1
+        else:
+            dic2[item] = 1
+
+    num = 0
+    for k in dic1.keys():
+        if k in dic2.keys():
+            num += abs(dic1[k] - dic2[k])
+        else:
+            num += dic1[k]
+
+    for k in dic2.keys():
+        if k not in dic1.keys():
+            num += dic2[k]
+
+    return num
+
+
+
+a = input().strip()
+b = input().strip()
+
+print(number_needed(a, b))
+
+```
