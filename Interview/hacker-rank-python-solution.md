@@ -2,7 +2,7 @@
 이진수에서 가장 긴 consecutive 1's 길이 반환
 
 
-```python3
+```python
 
 #!/bin/python3
 
