@@ -108,3 +108,23 @@ b = input().strip()
 print(number_needed(a, b))
 
 ```
+
+
+## Trees: Is This a Binary Search Tree?
+binary search tree의 조건에 부합하는지
+
+
+```python
+import sys
+def checkBST(root):
+    return checkBST2(root,-1,pow(10,5))
+
+def checkBST2(root,left,right):
+    if root is None:
+        return True
+    if root.data <= left or root.data >= right:
+        return False
+    else:
+        return checkBST2(root.left,left,root.data) and checkBST2(root.right,root.data,right)
+
+```
