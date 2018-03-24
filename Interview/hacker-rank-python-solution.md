@@ -128,3 +128,38 @@ def checkBST2(root,left,right):
         return checkBST2(root.left,left,root.data) and checkBST2(root.right,root.data,right)
 
 ```
+
+## HashTables: Ice cream parlor
+
+어떤 요소가 hashtable을 쓰게하는 건지 잘 모르겠음
+unique한 두 값이 결정되는 input임
+돈 이 있고
+i번째 아이스크림의 가격이 들어있는 arr가 있음
+
+이 돈에 꼭 맞는 아이스크림 두개 번호를 print
+```python
+#!/bin/python3
+
+import sys
+
+def solve(arr, money):
+    map = {}
+    idx = 0
+    for cost in arr:
+        comp = money - cost
+        if comp in map.keys():
+            print(str(map[comp]+1) + " " + str(idx+1))
+            break
+        else:
+            map[cost] = idx
+            idx = idx + 1
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for a0 in range(t):
+        money = int(input().strip())
+        n = int(input().strip())
+        arr = list(map(int, input().strip().split(' ')))
+        solve(arr, money)
+
+```
