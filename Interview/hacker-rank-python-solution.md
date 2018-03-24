@@ -163,3 +163,43 @@ if __name__ == "__main__":
         solve(arr, money)
 
 ```
+
+### Tries: Contacts
+
+이름을 저장하는 함수
+그리고 특정 검색어로 시작되는 게 몇개나 있는지 리턴하는 함수를 구현
+
+역시 검색엔진처럼 해보려고했지만
+dict 으로 나누면 아니 효율 너무 별로지않을까했고, 그래서 구현을 안했었는데
+답을 보니...이거였음
+
+딕셔너리쓰면 늦지않게ㅋㅋ다할수있다 dictionary(hashtable) 의 접근 시간 복잡도는 O(1)이니까 그런가
+
+```python
+def all_pos(contact):
+    return list((contact[0:idx] for idx in range(1,len(contact) + 1)))
+
+contact_dict = {}
+def add(contact):
+    list = all_pos(contact)
+    for item in list:
+        if item in contact_dict.keys():
+            contact_dict[item] = contact_dict[item] + 1
+        else:
+            contact_dict[item] = 1
+
+def find(contact):
+    if contact in contact_dict.keys():
+        return contact_dict[contact]
+    else:
+        return 0
+
+n = int(input().strip())
+for a0 in range(n):
+    op, contact = input().strip().split(' ')
+    if op == "add":
+        add(contact)
+    elif op == "find":
+        print(str(find(contact)))
+
+```
