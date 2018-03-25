@@ -173,7 +173,8 @@ if __name__ == "__main__":
 dict 으로 나누면 아니 효율 너무 별로지않을까했고, 그래서 구현을 안했었는데
 답을 보니...이거였음
 
-딕셔너리쓰면 늦지않게ㅋㅋ다할수있다 dictionary(hashtable) 의 접근 시간 복잡도는 O(1)이니까 그런가
+딕셔너리쓰면 늦지않게ㅋㅋ다할수있다 dictionary(hashtable) 의 접근 시간 복잡도는 O(1)이니까 그런가.
+
 
 ```python
 def all_pos(contact):
@@ -201,5 +202,57 @@ for a0 in range(n):
         add(contact)
     elif op == "find":
         print(str(find(contact)))
+
+```
+
+다만 이 방식은 spatial complexity 가 겁나 커진다는 걸 알 수 있다.
+흠, 그러면 어떤 자료 구조를 써야할까 -
+문제에 나와있지만 (Trie)[http://blog.ilkyu.kr/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%97%90%EC%84%9C-Trie-%ED%8A%B8%EB%9D%BC%EC%9D%B4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0]이다.
+
+tree의 일종임.
+
+Trie는 문자열 검색에 특화된 자료구조이고, 참고한 링크에 설명이 매우매우 잘 나와있으니 한번 보는 것이 좋을 듯.
+
+
+## DFS : Connected cell in grid
+
+자주 나오는 문제임
+필요한 부분만 돌고,
+positions = [(-1,-1)..]
+등으로 주변 8개를 도는 것이 포인트.
+
+만약 어떤 점이 1이면, 그 점은 0으로 바꿔놓고.
+
+```python
+def dfs(grid,i,j):
+    n , m = len(grid), len(grid[0])
+    cnt = 1
+    positions = [(-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)]
+    grid[i][j] = 0
+
+    for pos in positions:
+        if i + pos[0] in range(n) and j + pos[1] in range(m):
+            if grid[i+pos[0]][j+pos[1]] == 1:
+                cnt += dfs(grid,i+pos[0],j+pos[1])
+    return cnt
+
+def getBiggestRegion(grid):
+    max_region = 0
+    n, m = len(grid) , len(grid[0])
+
+    for i in range(n):
+        for j in range(m):
+            if grid[i][j] == 1:
+                max_region = max(max_region, dfs(grid,i,j))
+
+    return max_region
+
+n = int(input().strip())
+m = int(input().strip())
+grid = []
+for grid_i in range(n):
+    grid_t = list(map(int, input().strip().split(' ')))
+    grid.append(grid_t)
+print(getBiggestRegion(grid))
 
 ```
