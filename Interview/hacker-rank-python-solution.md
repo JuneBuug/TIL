@@ -256,3 +256,58 @@ for grid_i in range(n):
 print(getBiggestRegion(grid))
 
 ```
+
+
+## BFS: Shortest Reach in Graph
+일반적으로는 다익스트라로 푸는 내용을 BFS로 푸는 해법.
+
+물론 이번에도 풀지 못했지만 따라 쳤다리..
+
+`' '.join` 등의 프린트 방법도 볼수있었음.
+
+```python
+from queue import Queue
+class Graph(object):
+
+    def __init__(self,n):
+        self.n = n
+        self.edges = [[0] * n for i in range(n)]
+
+    def connect(self,i,j):
+        self.edges[i][j] = 1
+        self.edges[j][i] = 1
+
+    def find_all_distances(self,index):
+        distances = [-1] * self.n
+        queue = Queue()
+        queue.put((index,-1,0))
+        # 시작점 index, 이전 노드의 index, 시작점과의 거리
+
+        while not queue.empty():
+            _index, _preIndex, _dist = queue.get()
+            if distances[_index] == -1 or _dist < distances[_index]:
+                distances[_index] = _dist
+                for idx, edge in enumerate(self.edges[_index]):
+                    if not idx == _preIndex and edge:
+                        queue.put((idx,_index,_dist+1))
+
+        return [6*d if d != -1 else d for d in distances]
+
+
+
+
+
+t = int(input())
+for i in range(t):
+    n,m = [int(value) for value in input().split()]
+    graph = Graph(n)
+    for i in range(m):
+        x,y = [int(x) for x in input().split()]
+        graph.connect(x-1,y-1)
+    s = int(input())
+    dist = graph.find_all_distances(s-1)
+
+    print(' '.join([str(item) for item in dist if item !=0]))
+
+
+```
