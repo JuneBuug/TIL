@@ -343,3 +343,56 @@ for a_i in range(n):
    print(median(a))
 
 ```
+
+
+## MERGE SORT : COUNTING INVERSIONS
+
+순서가 잘못된 부분을 세는 것임
+
+
+```python
+#!/bin/python3
+
+import sys
+
+def merge_sort(arr):
+    list = []
+    if len(arr) > 1:
+        mid = int(len(arr) / 2)
+        arr1,cnt1 = merge_sort(arr[:mid])
+        arr2,cnt2 = merge_sort(arr[mid:])
+        list,cnt = merge(arr1,arr2)
+        return list, cnt1+cnt2+cnt
+    else:
+        return arr,0
+
+def merge(arr1,arr2):
+    arr = []
+    cnt = 0
+    while arr1 and arr2:
+        if arr1[0] <= arr2[0]:
+            arr.append(arr1.pop(0))
+        else:
+            cnt += len(arr1)
+            arr.append(arr2.pop(0))
+
+    if len(arr1) != 0:
+        arr.extend(arr1)
+    if len(arr2) != 0:
+        arr.extend(arr2)
+    return arr,cnt
+
+def countInversions(arr):
+    sorted, cnt = merge_sort(arr)
+    return cnt
+
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for a0 in range(t):
+        n = int(input().strip())
+        arr = list(map(int, input().strip().split(' ')))
+        result = countInversions(arr)
+        print(result)
+
+```
