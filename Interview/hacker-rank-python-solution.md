@@ -311,3 +311,35 @@ for i in range(t):
 
 
 ```
+
+## HEAP : median 찾기
+
+물론 힌트 봤지만..
+python에는 갓갓 sort 가 있었던 것이다
+이진 탐색을 이용한 insort (배열 정렬 순을 바꾸지않고 insert하는 것)
+
+insert(리스트,넣을 원소,(범위)) 이렇게 쓴다.
+
+```python
+#!/bin/python3
+
+import sys
+from bisect import insort
+
+def median(list):
+    if len(list) % 2 == 0 :
+        half = int(len(list) / 2)
+        pre_half = half - 1
+        return (list[half] + list[pre_half]) / 2
+    else:
+        return float(list[int((len(list)-1)/2)])
+
+n = int(input().strip())
+a = []
+a_i = 0
+for a_i in range(n):
+   a_t = int(input().strip())
+   insort(a,a_t)
+   print(median(a))
+
+```
