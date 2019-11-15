@@ -234,3 +234,52 @@ class Solution {
 }
 
 ```
+
+21 Merge Two Sorted Lists 
+
+```java
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode resultNode = new ListNode(0); 
+        
+        ListNode curr = resultNode;
+        while (l1 != null && l2 != null) {
+            
+            curr.next = new ListNode(0);
+            curr = curr.next;
+            
+            System.out.println("l1: " + l1.val + " l2: " + l2.val);
+            if (l1.val <= l2.val) {
+                curr.val = l1.val;
+                l1 = l1.next;
+            } else {
+                curr.val = l2.val;
+                l2 = l2.next;
+            }
+            
+            
+        }
+        
+        
+        if (l1 == null) {
+            curr.next = l2;
+        }
+        
+        
+        if (l2 == null) {
+            curr.next = l1;
+        }
+        
+        return resultNode.next;
+    }
+}
+```
