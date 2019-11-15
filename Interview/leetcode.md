@@ -79,3 +79,52 @@ class Solution {
     }
 }
 ```
+
+13. Roman to Integer
+완전 무식하게 map 썼는데
+```java
+
+class Solution {
+    public int romanToInt(String s) {
+        Map<String, Integer> map = new HashMap<>();
+        
+        map.put("IV", 4);
+        map.put("IX", 9);
+        map.put("XL", 40);
+        map.put("XC", 90);
+        map.put("CD", 400);
+        map.put("CM", 900);
+        
+        
+        int result = 0;
+        for (String roman : map.keySet()) {
+            if (s.contains(roman)) {
+                s = s.replace(roman, "");
+                result += map.get(roman);
+            }
+        }
+          
+        Map<String, Integer> map2 = new HashMap<>();
+        
+        map2.put("I", 1);
+        map2.put("V", 5);
+        map2.put("X", 10);
+        map2.put("L", 50);
+        map2.put("C", 100);
+        map2.put("D", 500);
+        map2.put("M", 1000);
+        
+        
+         for (String roman : map2.keySet()) {
+            while (s.contains(roman)) {
+                System.out.println(s);
+                
+                s = s.replaceFirst(roman, "");
+                result += map2.get(roman);
+            }
+        }
+        
+        return result; 
+    }
+}
+```
