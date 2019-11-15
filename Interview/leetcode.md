@@ -182,3 +182,55 @@ class Solution {
 
 
 ```
+
+20 Valid Parentheses
+stack 하면 제일 쉬운거..
+
+```java
+class Solution {
+    public boolean isValid(String s) {
+        if (s.length() == 0) {
+            return true;
+        }
+        
+        if (s.length() % 2 == 1) {
+            return false;
+        }
+        
+        Stack<Character> stack = new Stack();
+        
+        for (char c : s.toCharArray()) {
+            
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            }
+            
+            if (c == ')') {
+                if (stack.size() == 0 || stack.pop() != '(') {
+                    return false;
+                } 
+            }
+            
+            if (c == '}') {
+                if (stack.size() == 0 || stack.pop() != '{') {
+                    return false;
+                } 
+            }
+            
+            if (c == ']') {
+                if (stack.size() == 0 || stack.pop() != '[') {
+                    return false;
+                } 
+            }
+        }
+        
+        if (stack.size() != 0) {
+            return false; 
+        }
+        
+        return true;
+    
+    }
+}
+
+```
