@@ -128,3 +128,57 @@ class Solution {
     }
 }
 ```
+
+
+14. Longest Common Prefix
+
+```java
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        
+        if (strs.length == 0) {
+            return "";
+        }
+        
+       String shortest = strs[0]; 
+        
+        if (strs.length == 1) {
+            return shortest;
+        }
+       
+        
+        for(String s : strs) {
+            if (s.length() < shortest.length()) {
+                shortest = s;
+            }
+        }
+        
+         System.out.println(shortest);
+        
+        String prefix = "";
+        for(int i=0; i<= shortest.length(); i++) {
+            
+            String candidate = shortest.substring(0,i);
+            System.out.println(candidate);
+            if (allStartsWith(strs, candidate)){
+                prefix = candidate;
+            }else {
+                break;
+            }
+        }
+        return prefix;
+        
+    }
+    
+    private boolean allStartsWith(String[] strs, String candidate) {
+        for (String s: strs) {
+            if (!s.startsWith(candidate)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
+```
