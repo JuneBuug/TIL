@@ -1,3 +1,4 @@
+난도를 적지 않은 것은 모두 Easy입니다.
 
 1. Two Sum 
 
@@ -282,4 +283,71 @@ class Solution {
         return resultNode.next;
     }
 }
+```
+
+
+
+2. Add Two Numbers (Medium)
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode ret = new ListNode(0);
+    
+        ListNode pnt = ret;
+        while (l1 != null || l2 != null) {
+            int eval = 0;
+
+           
+            if (l1 != null && l2 != null) {
+              eval = l1.val + l2.val;
+            }
+        
+            if (l1 == null && l2 != null) {
+                eval = l2.val;
+            }
+            
+            if (l2 == null && l1 != null) {
+                eval = l1.val;
+            }
+            
+            
+            if (eval > 9) {
+                
+                if (l1.next != null) {
+                    l1.next.val += 1;
+                }else {
+                    l1.next = new ListNode(1);
+                }
+                eval -= 10;
+            }
+            
+
+            pnt.next = new ListNode(eval);
+            pnt = pnt.next;
+            
+         
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            
+            
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        } 
+        
+        return ret.next;
+    }
+    
+}
+    
 ```
