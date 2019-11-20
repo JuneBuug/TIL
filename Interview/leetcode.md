@@ -439,3 +439,60 @@ class Solution {
     }
 }
 ```
+
+
+38. Count and Say 
+
+너무 느리다 ㅋㅋㅋㅋ
+
+> Runtime: 70 ms, faster than 7.82% of Java online submissions for Count and Say.
+Memory Usage: 36.4 MB, less than 52.63% of Java online submissions for Count and Say. 
+```java
+class Solution {
+    public String countAndSay(int n) {
+            
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, "1");
+        map.put(2, "11");
+        map.put(3, "21");
+        map.put(4, "1211");
+        map.put(5, "111221");
+        
+        if (n < 6) {
+            return map.get(n);
+        } else {
+            for(int i=6; i<= n; i ++) {
+                map.put(i, count(map.get(i-1)));
+            }
+        }
+        
+        return map.get(n);
+        
+    }
+    
+    public String count(String org) {
+        
+        String ret = "";
+        
+        int cnt = 1;
+        char before = ' ';
+        for (char c: org.toCharArray()) {
+            System.out.println(c);
+            
+            if (before == c) {
+                cnt ++;
+            } else if (before != ' ') {
+                ret += String.valueOf(cnt);
+                ret += before;
+                cnt = 1;
+            }
+             before = c;
+        }
+        
+        ret += String.valueOf(cnt);
+        ret += before;
+        
+        return ret;
+    }
+}
+```
