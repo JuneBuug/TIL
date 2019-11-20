@@ -496,3 +496,39 @@ class Solution {
     }
 }
 ```
+
+
+28. Implement strStr()
+
+> Runtime: 0 ms, faster than 100.00% of Java online submissions for Implement strStr().
+Memory Usage: 35.7 MB, less than 100.00% of Java online submissions for Implement strStr().
+
+```java
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int needleLength = needle.length();
+        int haystackLength = haystack.length(); 
+        
+        if (needle == null ||needleLength == 0) {
+            return 0;
+        }
+        
+    
+        if (haystackLength < needleLength) {
+            return -1;
+        }
+        
+        char[] arr = haystack.toCharArray();
+        for (int i=0; i< haystackLength - needleLength + 1; i++) {
+            if (arr[i] == needle.toCharArray()[0]) {
+                
+                if (haystack.substring(i, i + needleLength).equals(needle)) {
+                    return i;
+                }
+            }
+        }
+        
+        return -1; 
+    }
+}
+```
