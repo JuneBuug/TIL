@@ -401,3 +401,41 @@ class Solution {
     }
 }
 ```
+
+35. Search Insert Position
+
+이게 속도가 왜 빠르지?
+
+```java
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+         int length = nums.length;
+        
+        if (length == 0) {
+            return 0;
+        }
+        
+        if (target < nums[0]) {
+            return 0;
+        }
+        
+        if (target > nums[length-1]) {
+            return length;
+        }
+        
+        
+        int ret = 0;
+        for (int i=0; i<length-1; i++) {
+            if( (nums[i] < target && nums[i+1] > target) || nums[i+1] == target ) {
+                ret = i+1;
+                break;
+            }
+
+        }
+        
+        return ret;
+        
+    }
+}
+```
