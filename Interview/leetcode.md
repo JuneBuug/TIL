@@ -532,3 +532,32 @@ class Solution {
     }
 }
 ```
+
+
+
+53. Maximum Subarray 
+카데인 알고리즘 공부해서 적었다. 
+사실 푼게 아니라 공부인 셈. 
+
+블로그로 적을만 하다
+```java
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int best_sum = Integer.MIN_VALUE;
+        int end_sum = 0;
+        
+        for (int num : nums) {
+            end_sum = Math.max(end_sum + num, num);
+            best_sum  = Math.max(end_sum, best_sum);
+        }
+        
+        return best_sum;
+        
+    
+    }
+    
+    
+}
+```
+
+
