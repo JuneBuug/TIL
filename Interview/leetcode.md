@@ -577,3 +577,44 @@ class Solution {
 }
 ```
 
+66. Plus One
+하나하나 옮기고 싶지않아서.. 자릿수가 올라가는 케이스 사용한 꼼수 
+
+```java
+class Solution {
+    public int[] plusOne(int[] digits) {
+        
+        int len = digits.length; 
+        
+        if (all9s(digits)) {
+            int[] ret = new int[len+1];
+            Arrays.fill(ret, 0);
+            ret[0] = 1;
+            return ret;
+        }
+        
+        digits[len-1] ++;
+    
+        for(int i = len-1; i >=0; i--) {
+            if (digits[i] == 10) {
+                digits[i] = 0; 
+                digits[i-1]++;
+            }
+        }
+        
+        
+        return digits;
+    }
+    
+    public boolean all9s(int[] digits) {
+        
+        for(int i=0; i< digits.length; i ++) {
+            if (digits[i] != 9) { 
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+```
